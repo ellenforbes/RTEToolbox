@@ -1,6 +1,6 @@
 import re
 
-inputFeatureClass = "Cityname_SP_YYYYMMDD_Design"
+inputFeatureClass = "Cityname_SP_YYYYMMDD"
 streetNameField = "StreetName"
 
 arcpy.CalculateField_management(inputFeatureClass, streetNameField, r"re.sub(' +', ' ',!" + streetNameField + "!)", "PYTHON_9.3")
