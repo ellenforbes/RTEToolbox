@@ -1,13 +1,13 @@
 import arcpy  
-from arcpy import env  
-env.workspace = r"C:\Projects\RTEToolbox\GDBandMXDforTesting\SurveyQC.gdb"  
+from arcpy import env #not necessary if I can fix line 9
+env.workspace = r"C:\Projects\RTEToolbox\GDBandMXDforTesting\SurveyQC.gdb"  #not necessary if I can fix line 9
 
 #inputFeatureClass = "Cityname_SP_YYYYMMDD_Survey"
   
 fields = ["RTEID", "Technology", "LampWatt", "RoadClass"]  
  
-for dirpath, dirnames, filenames in arcpy.da.Walk(env.workspace):  
-    for filename in filenames:  
+for dirpath, dirnames, filenames in arcpy.da.Walk(env.workspace):  # I don't want it ot look in the whole work space but just in inputFeatureClass
+    for filename in filenames:  # This therefore should not be necessary
         for field in fields:  
             where = field + " IS NULL"  
             try:  
