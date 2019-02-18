@@ -1,18 +1,14 @@
-RTE Toolbox
+# To Do List
 
-Calculate Mount Ratio:
-Calculates the mount ratio, allows user to select the road name field and the feature class
-
-
-Create PIR:
+RTE Installations
+1. Create PIR
 Issue: Export to Excel not working in tool
 Creates PIR from Install Column and allows user to define dates.
 Currently the export to excel functionality only works in the unpackaged python for this.
 
+RTE Survey QC:
+2. Export Copy To Local
+Need to Add (but not urgent) - RemoveRelate_management (in_layer_or_view, relate_name)
 
-Clean Street Names:
-This script needs to be imported to the toolbox, possibly should be further refined to highlight non-standard streetnames to user in a list and to deal with North East South West.
-
-
-Test Select:
-This was a test tool to make selections work, it can be deleted.
+4. Search for Nulls
+Needs Work - is in unpackaged, but not clean code
