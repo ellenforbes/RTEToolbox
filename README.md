@@ -22,6 +22,10 @@ Needs Work - is in unpackaged, but not clean code
 0. Create Design Fields, inc. calculate xy calc mount ratio
 
 
+Utility Review
+0. Create a Porbable Match on for where wattage is different.
+
+
 Create FIR
 0. Export KMZ, Export Shapefile, Export Excel Table
 LayerToKML_conversion (layer, out_kmz_file, {layer_output_scale}, {is_composite}, {boundary_box_extent}, {image_size}, {dpi_of_client}, {ignore_zvalue})
