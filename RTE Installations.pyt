@@ -28,7 +28,7 @@ class CreatePIR(object):
         param2.parameterDependencies = [param0.name]  
         param3 = arcpy.Parameter("fromDate", "From Date (counts from midnight the previous day)", "Input", "Date","Required")
         param4 = arcpy.Parameter("toDate", "To Date (counts until midnight on this day)", "Input", "Date","Required")
-        param5 = arcpy.Parameter("outputFolder", "Folder", "Output", "DEFolder","Required")
+        param5 = arcpy.Parameter("outputFileName", "Filename", "Output", "DEFile","Required")	
         
         params = [param0, param1, param2, param3, param4, param5]
         return params
@@ -41,7 +41,7 @@ class CreatePIR(object):
         installDateField = parameters[2].valueAsText
         fromDate =  parameters[3].valueAsText
         toDate =  parameters[4].valueAsText
-        outputFolder = parameters[5].valueAsText
+        outputFileName = parameters[5].valueAsText
 
         # Build queries to select only installed lights and to define that selection between dates
         defQueryInstallation = statusField + " = 'Installed'"
@@ -58,6 +58,6 @@ class CreatePIR(object):
 
         # Convert the selection on table to Excel
         # arcpy.TableToDBASE_conversion("inputFeatureClassOut", "C:\\Users\\ekitteridge\\Desktop\\ExcelOutput.xls")
-        arcpy.TableToExcel_conversion("inputFeatureClassOut", "C:\\Users\\ekitteridge\\Desktop\\ExcelOutput.xls")
+        arcpy.TableToExcel_conversion("inputFeatureClassOut", outputFileName +".xls", "ALIAS")
 
         return
