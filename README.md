@@ -31,8 +31,12 @@ Edit: Need to Add RemoveRelate_management (in_layer_or_view, relate_name)
 High Priority: Needs Work - is in unpackaged, but not clean code
 
 ### 5. Create Design Fields - Edit Required
-inc. calculate xy calc mount ratio
+inc. calculate xy calc mount ratio, calc luminaire type field from fixture type
 Medium Priority: Incompletee
+
+### 0. Search for Duplicate IDs - Low Priority
+New Tool, would search for duplicate pole ID's in the same street name.
+Also a general duplicate tool to search for duplicates in RTE ID - dev this first.
 
 ### Stand Alone - Calculate Coordinates in WGS 84 - Working Happy
 
