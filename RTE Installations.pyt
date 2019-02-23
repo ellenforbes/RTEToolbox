@@ -8,12 +8,12 @@ class Toolbox(object):
         self.alias = ""
 
         # List of tool classes associated with this toolbox
-        self.tools = [CreatePIR]
+        self.tools = [CreatePIR, CreateFIR]
 
 class CreatePIR(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "Create PIR"
+        self.label = "2. Create PIR"
         self.description = ""
         self.canRunInBackground = False
 
@@ -57,7 +57,44 @@ class CreatePIR(object):
         arcpy.SelectLayerByAttribute_management("inputFeatureClassOut", "SUBSET_SELECTION", queryDate)
 
         # Convert the selection on table to Excel
-        # arcpy.TableToDBASE_conversion("inputFeatureClassOut", "C:\\Users\\ekitteridge\\Desktop\\ExcelOutput.xls")
         arcpy.TableToExcel_conversion("inputFeatureClassOut", outputExcel)
+
+        return
+
+class CreateFIR(object):
+    def __init__(self):
+        """Define the tool (tool name is the name of the class)."""
+        self.label = "3. Create FIR"
+        self.description = ""
+        self.canRunInBackground = False
+
+    def getParameterInfo(self):
+        """Define parameter definitions"""
+        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input","GPFeatureLayer","Required")
+        param1 = arcpy.Parameter("outputFolder", "Folder", "Input", "DEFolder","Required")
+        param2 = arcpy.Parameter("outputExcel", "Excel File", "Output", "DEFile","Required")
+        param3 = arcpy.Parameter("outputKML", "KML File", "Output", "DEFile","Required")
+        
+        params = [param0, param1, param2, param3]
+        return params
+
+    def execute(self, parameters, messages):
+        """The source code of the tool."""
+        #Define variables
+        inputFeatureClass = parameters[0].valueAsText
+        outputFolder = parameters[1].valueAsText
+        outputExcel = parameters[2].valueAsText
+        outputKML =  parameters[3].valueAsText
+
+        arcpy.MakeFeatureLayer_management (inputFeatureClass, "inputFeatureClassOut")
+
+        # Converts Feature to Excel
+        arcpy.TableToExcel_conversion("inputFeatureClassOut", outputExcel)
+
+        # Converts Feature to Shapefile
+        arcpy.FeatureClassToShapefile_conversion("inputFeatureClassOut", outputFolder)
+
+        # Converts Feature to Excel
+        arcpy.LayerToKML_conversion("inputFeatureClassOut", outputKML)
 
         return
