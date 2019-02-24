@@ -5,6 +5,10 @@
 ### 0. Check Points In Boundary
 New Tool, checks all points are within the boundary.
 
+### 0. Add fields for External Data
+
+### 0. Add Initial Survey Fields
+
 
 ## RTE Survey QC:
 ### 1. Calculate RTE IDs (1, 2, 3..) - Working Happy
@@ -19,9 +23,7 @@ Edit: Iterate through the streetNameField and flag any endings that are not foun
 ### 4. Search for Nulls - Edit Required
 High Priority: Needs Work - is in unpackaged, but not clean code
 
-### 5. Create Design Fields - Edit Required
-inc. calculate xy calc mount ratio, calc luminaire type field from fixture type
-Medium Priority: Incompletee
+### 5. Create Design Fields - Working Happy
 
 ### 0. Search for Duplicate IDs - Low Priority
 New Tool, would search for duplicate pole ID's in the same street name.
