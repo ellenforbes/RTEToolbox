@@ -134,11 +134,6 @@ class CleanStreetNames(object):
 
         arcpy.AddMessage("Shortened all street and road abbreviations")
 
-        #Deal with north, east, south, west mess :( not sure on logic here because these can feature at beginning and end + should be N or North
-        #Iterate through the streetNameField and flag any endings that are not found in streetNameFix[1] - hmmm - hard for me, need to use SearchCursor
-
-        return
-
 class SearchForNulls(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
@@ -171,18 +166,47 @@ class AddDesignFields(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        
-        params = [param0]
+        param1 = arcpy.Parameter("projectNo","Project Number","Input", "GPString","Required")
+        params = [param0, param1]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
         inputFeatureClass = parameters[0].valueAsText
-        rteIDField = parameters[1].valueAsText
+        projectNo = str(parameters[1].valueAsText)
+        latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
 
+        arcpy.AddMessage(projectNo)
+
+        # Process : Add Field : arcpy.AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
+        arcpy.AddField_management(inputFeatureClass, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "MountRatio", "DOUBLE", "", "", "", "Mount Ratio", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "LumType", "TEXT", "", "", "40", "Luminaire Type", "NULLABLE", "NON_REQUIRED","LumType")
+        arcpy.AddField_management(inputFeatureClass, "DesignMod", "TEXT", "", "", "50", "Design Model", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "LEDDesign", "TEXT", "", "", "", "LED Designed", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "MiscParts", "TEXT", "", "", "", "Misc Parts", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "InstlCode", "TEXT", "", "", "10", "Install Code", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddMessage("Design Fields Added")
 
+        calcMR = "(!RoadWidth!+!Setback!-!ArmLength!)/float(!LampHeight!)"
+        arcpy.CalculateField_management(inputFeatureClass, "MountRatio", calcMR, "PYTHON_9.3")
+        
+        rows = arcpy.UpdateCursor(inputFeatureClass, "", latLonRef)  
+        for row in rows:  
+            feat = row.shape  
+            coord = feat.getPart()  
+            lon = coord.X  
+            lat = coord.Y  
+            row.PointY = lat  
+            row.PointX = lon  
+            rows.updateRow(row) 
+        
+        arcpy.CalculateField_management(inputFeatureClass, "ProjectNo", '"' + projectNo + '"', "PYTHON_9.3")
+        arcpy.CalculateField_management(inputFeatureClass, "LumType", "!" + FixType + "!", "PYTHON_9.3")
+        arcpy.CalculateField_management(inputFeatureClass, "ProjectNo", '"' + projectNo + '"', "PYTHON_9.3")
 
 class CalcMountRatio(object):
     def __init__(self):

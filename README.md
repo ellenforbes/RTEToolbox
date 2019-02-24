@@ -13,6 +13,8 @@ New Tool, checks all points are within the boundary.
 Edit: Need to Add RemoveRelate_management (in_layer_or_view, relate_name)
 
 ### 3. Clean Street Names - Working Happy
+Edit: Deal with north, east, south, west mess :( not sure on logic here because these can feature at beginning and end + should be N or North
+Edit: Iterate through the streetNameField and flag any endings that are not found in streetNameFix[1] - hmmm - hard for me, need to use SearchCursor
 
 ### 4. Search for Nulls - Edit Required
 High Priority: Needs Work - is in unpackaged, but not clean code
@@ -54,6 +56,7 @@ Edit: Add functionality to also create the summary stats (by date and by LED Des
 Edit: Add z values to KML
 Edit: Limit fields exported?
 Edit: Create Summary Stats for page 1 of excel (count LED Designed by Installed status)
+Edit: Make naming and folder convention automatic
 
 ### 0. Create Install Fields/Domains/CVs - Medium Priority
 
