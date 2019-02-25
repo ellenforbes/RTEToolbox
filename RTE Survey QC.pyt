@@ -1,4 +1,9 @@
 import arcpy
+import re
+import csv
+import os
+import datetime
+from datetime import date
 
 class Toolbox(object):
     def __init__(self):
@@ -8,7 +13,7 @@ class Toolbox(object):
         self.alias = ""
 
         # List of tool classes associated with this toolbox
-        self.tools = [CalcSeqNumbers, ExportCopyToLocal, CleanStreetNames, SearchForNulls, AddDesignFields, CalcMountRatio, CalcXY, CalcSeqNumbersAlt]
+        self.tools = [CalcSeqNumbers, ExportCopyToLocal, CleanStreetNames, SearchForNulls, SearchOutsideBoundary, AddDesignFields, CalcMountRatio, CalcXY, CalcSeqNumbersAlt]
 
 class CalcSeqNumbers(object):
     def __init__(self):
@@ -72,7 +77,7 @@ class ExportCopyToLocal(object):
         folderLocation = parameters[1].valueAsText
         citynameSP = "Cityname_SP"
         today = str(date.today().strftime("%Y%m%d"))
-        out_name = citynameSP + "_" +today + "_" + "Inventory"
+        out_name = citynameSP + "_" + today + "_" + "Inventory"
 
         arcpy.AddMessage(out_name)
 
@@ -101,7 +106,7 @@ class CleanStreetNames(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        import re
+        #import re
 
         inputFeatureClass = parameters[0].valueAsText
         streetNameField = parameters[1].valueAsText
@@ -134,10 +139,60 @@ class CleanStreetNames(object):
 
         arcpy.AddMessage("Shortened all street and road abbreviations")
 
+class SearchOutsideBoundary(object):
+    def __init__(self):
+        """Define the tool (tool name is the name of the class)."""
+        self.label = "4. Search For Points Outside Boundary"
+        self.description = ""
+        self.canRunInBackground = False
+
+    def getParameterInfo(self):
+        """Define parameter definitions"""
+        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("boundary","Municipality Boundary","Input", ["GPFeatureLayer", "GPString"],"Required")
+        #param2 = arcpy.Parameter("folderPath","Output Folder","Input", "DEFolder","Required")
+
+        params = [param0, param1]
+        return params
+
+    def execute(self, parameters, messages):
+        """The source code of the tool."""
+        #Define variables
+        #import csv
+        #import os
+        #from datetime import date
+
+        def createNewOrEmptyExistingFile(newFile):
+            fileAlreadyExists = os.path.isfile(newFile)
+            if fileAlreadyExists:
+                os.remove(newFile)
+            open(newFile, "w+")
+
+        inputFeatureClass = parameters[0].valueAsText
+        boundary = parameters[1].valueAsText
+        folderPath = ".."
+        name = "\\PointsOutsideBoundary_" + str(date.today().strftime("%Y%m%d")) + ".csv"
+        arcpy.AddMessage(name)
+        output = folderPath + name
+        arcpy.AddMessage(output)
+        createNewOrEmptyExistingFile(output)
+
+        arcpy.SelectLayerByLocation_management (inputFeatureClass,"WITHIN", boundary, "", "NEW_SELECTION", "INVERT")
+
+        with open(output, 'w', newline='') as ofile:
+            writer = csv.writer(ofile)
+            header = "RTE ID", "Luminaire Type", "Issue"
+            writer.writerow(header)
+            for row in arcpy.SearchCursor(inputFeatureClass):
+                output = row.RTEID, "Outside Boundary"
+                print(output)
+                writer.writerow(output)
+        arcpy.AddMessage("bounary searched")
+
 class SearchForNulls(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "4. Search For Nulls"
+        self.label = "5. Search For Nulls"
         self.description = ""
         self.canRunInBackground = False
 
@@ -180,6 +235,8 @@ class AddDesignFields(object):
         arcpy.AddMessage(projectNo)
 
         # Process : Add Field : arcpy.AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
+        arcpy.AddField_management(inputFeatureClass, "Ownership", "TEXT", "", "", "60", "Ownership", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "UtlCompany", "TEXT", "", "", "60", "Utility Company", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
