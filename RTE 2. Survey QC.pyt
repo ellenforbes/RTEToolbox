@@ -214,7 +214,7 @@ class SearchForNulls(object):
 class AddDesignFields(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "5. Add Design Fields, Calc X and Y, Calc Mount Ratio"
+        self.label = "6. Add Design Fields, Calc X and Y, Calc Mount Ratio"
         self.description = ""
         self.canRunInBackground = False
 
