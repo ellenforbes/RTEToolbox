@@ -10,59 +10,48 @@ class Toolbox(object):
         self.alias = ""
 
         # List of tool classes associated with this toolbox
-        self.tools = [fClassAndRteId, addSurveyFields, addReviewFields, addEMatchDomain]
+        self.tools = [fClassSetUp, addReviewFields, addEMatchDomain]
 
 
-class fClassAndRteId(object):
+class fClassSetUp(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "1. Create Feature Class and RTE ID Field"
-        self.description = ""
-        self.canRunInBackground = False
-
-    def getParameterInfo(self):
-        """Define parameter definitions"""
-        param0 = arcpy.Parameter("fGdb","File Geodatabase","Input","DEWorkspace","Required")
-        param1 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
-        param2 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
-
-        params = [param0, param1, param2]
-        return params
-
-    def execute(self, parameters, messages):
-        """The source code of the tool."""
-        fGdb = parameters[0].valueAsText
-        cityname = parameters[1].valueAsText
-        sp = parameters[2].valueAsText
-        inputFeatureClass = cityname + "_" + sp + "_" + str(date.today().strftime("%Y%m%d")) + "_Survey"
-        inputFeatureClassPath = fGdb+ "\\" +inputFeatureClass
-        latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
-        
-        arcpy.CreateFeatureclass_management (fGdb, inputFeatureClass, "POINT", "", "DISABLED", "ENABLED", latLonRef)
-        arcpy.AddMessage("Feature Class Created")
-        arcpy.AddField_management(inputFeatureClasspath, "RTEID", "SHORT", "", "", "5", "RTE ID", "NULLABLE", "REQUIRED","")
-        arcpy.AddMessage("RTE ID Field Added, Cannot Be Deleted")
-        return
-
-class addSurveyFields(object):
-    def __init__(self):
-        """Define the tool (tool name is the name of the class)."""
-        self.label = "2. Add Fields For Survey"
+        self.label = "1. Create Feature Class, RTE ID and Survey Fields"
         self.description = ""
         self.canRunInBackground = False
 
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("inputFgdb","File Geodatabase","Input","DEWorkspace","Required")
-        param1 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input","GPFeatureLayer","Required")
+        param1 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
+        param2 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
+        param3 = arcpy.Parameter("missedLight","Tick if Layer is for Missed Lights","Input","GPBoolean","Optional")
 
-        params = [param0, param1]
+        params = [param0, param1, param2, param3]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         inputFgdb = parameters[0].valueAsText
-        inputFeatureClass = parameters[1].valueAsText
+        cityname = parameters[1].valueAsText
+        sp = parameters[2].valueAsText
+        missedLight = parameters[3].valueAsText
+
+        if missedLight == 'true':
+            arcpy.AddMessage("The check box was checked")
+            inputFeatureClassName = cityname + "_" + sp + "_" + str(date.today().strftime("%Y%m%d")) + "_MissedLights"
+        else: #in this case, the check box value is 'false', user did not check the box
+            arcpy.AddMessage("The check box was not checked")
+            inputFeatureClassName = cityname + "_" + sp + "_" + str(date.today().strftime("%Y%m%d")) + "_Survey"
+
+        inputFeatureClass = inputFgdb + "\\" +inputFeatureClassName
+        latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
+        
+
+        arcpy.CreateFeatureclass_management (inputFgdb, inputFeatureClassName, "POINT", "", "DISABLED", "ENABLED", latLonRef)
+        arcpy.AddMessage("Feature Class Created")
+        arcpy.AddField_management(inputFeatureClass, "RTEID", "SHORT", "", "", "5", "RTE ID", "NULLABLE", "REQUIRED","")
+        arcpy.AddMessage("RTE ID Field Added, Cannot Be Deleted")
 
         arcpy.CreateDomain_management(inputFgdb, "LumType", "Survey, Lists luminaire type found by surveyor", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(inputFgdb, "DecoSubT", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
@@ -257,10 +246,10 @@ class addSurveyFields(object):
             arcpy.AddCodedValueToDomain_management(inputFgdb, "Surveyor", Surveyor[0], Surveyor[1])
 
         # Process: Add Field AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
-        arcpy.AddField_management(inputFeatureClass, "FixType", "TEXT", "", "", "40", "FixtureType", "NULLABLE", "NON_REQUIRED","LumType")
+        arcpy.AddField_management(inputFeatureClass, "FixType", "TEXT", "", "", "40", "FixtureType", "NON_NULLABLE", "NON_REQUIRED","LumType")
         arcpy.AddField_management(inputFeatureClass, "DecoSubT", "TEXT", "", "", "6", "Deco Subtype", "NULLABLE", "NON_REQUIRED","DecoSubT")
-        arcpy.AddField_management(inputFeatureClass, "Technology", "TEXT", "", "", "40", "Technology", "NULLABLE", "NON_REQUIRED","Technology")
-        arcpy.AddField_management(inputFeatureClass, "LampWatt", "SHORT", "4", "", "", "Lamp Wattage", "NULLABLE", "NON_REQUIRED","HIDWatt")
+        arcpy.AddField_management(inputFeatureClass, "Technology", "TEXT", "", "", "40", "Technology", "NON_NULLABLE", "NON_REQUIRED","Technology")
+        arcpy.AddField_management(inputFeatureClass, "LampWatt", "SHORT", "4", "", "", "Lamp Wattage", "NON_NULLABLE", "NON_REQUIRED","HIDWatt")
         arcpy.AddField_management(inputFeatureClass, "LampHeight", "SHORT", "4", "", "", "Lamp Height (ft)", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "ArmLength", "SHORT", "4", "", "", "Arm Length (ft)", "NULLABLE", "NON_REQUIRED","ArmLength")
         arcpy.AddField_management(inputFeatureClass, "Setback", "SHORT", "4", "", "", "Setback", "NULLABLE", "NON_REQUIRED","")
@@ -277,7 +266,7 @@ class addSurveyFields(object):
         arcpy.AddField_management(inputFeatureClass, "UtlPoleID", "TEXT", "", "", "20", "Utility Pole ID", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "Problems", "TEXT", "", "", "50", "Problems", "NULLABLE", "NON_REQUIRED","Problems")
         arcpy.AddField_management(inputFeatureClass, "SurvComs", "TEXT", "", "", "", "Survey Comments", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "SurvDate", "DATE", "", "", "", "Survey Date", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(inputFeatureClass, "SurvDate", "DATE", "", "", "", "Survey Date", "NON_NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(inputFeatureClass, "Surveyor", "TEXT", "", "", "30", "Surveyor", "NULLABLE", "NON_REQUIRED","Surveyor")
 
         return
