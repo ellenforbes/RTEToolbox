@@ -231,8 +231,8 @@ class fClassSetUp(object):
 
         #Surveyor
         SurveyorCVs = [
-            ["Surveyor1", "Surveyor1"],
-            ["Surveyor2", "Surveyor2"],
+            ["ED", "ED"],
+            ["EK", "EK"],
             ["Surveyor3", "Surveyor3"],
             ["Surveyor4", "Surveyor4"],
             ["Surveyor5", "Surveyor5"],
