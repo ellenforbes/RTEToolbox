@@ -1,9 +1,9 @@
 import arcpy
-import re
 import csv
 import os
 import datetime
 from datetime import date
+import re
 
 class Toolbox(object):
     def __init__(self):
@@ -24,8 +24,8 @@ class CalcSeqNumbers(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("rteIDField","RTE ID Field","Input", "Field","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("rteid_field","RTE ID Field","Input", "Field","Required")
         param1.filter.list = ['Short']
         param1.parameterDependencies = [param0.name]  
         
@@ -35,8 +35,8 @@ class CalcSeqNumbers(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
-        rteIDField = parameters[1].valueAsText
+        input_fc = parameters[0].valueAsText
+        rteid_field = parameters[1].valueAsText
 
         codeblock = """rec=0 
 def autoIncrement(): 
@@ -50,7 +50,7 @@ def autoIncrement():
  return rec
  """
 
-        arcpy.CalculateField_management(inputFeatureClass, rteIDField, "autoIncrement()" , "PYTHON_9.3", codeblock)
+        arcpy.CalculateField_management(input_fc, rteid_field, "autoIncrement()" , "PYTHON_9.3", codeblock)
         arcpy.AddMessage("Calculated sequential numbers in field starting at 1, 2, 3...")
 
 class ExportCopyToLocal(object):
@@ -62,8 +62,8 @@ class ExportCopyToLocal(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("folderLocation","Location","Input", "DEFolder","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("folder_location","Location","Input", "DEFolder","Required")
         
         params = [param0, param1]
         return params
@@ -73,16 +73,16 @@ class ExportCopyToLocal(object):
         #Define variables
         from datetime import date
 
-        inputFeatureClass = parameters[0].valueAsText
-        folderLocation = parameters[1].valueAsText
+        input_fc = parameters[0].valueAsText
+        folder_location = parameters[1].valueAsText
         citynameSP = "Cityname_SP"
         today = str(date.today().strftime("%Y%m%d"))
         out_name = citynameSP + "_" + today + "_" + "Inventory"
 
         arcpy.AddMessage(out_name)
 
-        arcpy.CreateFileGDB_management (folderLocation, "InventoryLayerCreation")
-        arcpy.FeatureClassToFeatureClass_conversion (inputFeatureClass, folderLocation +"\\InventoryLayerCreation.gdb", out_name)
+        arcpy.CreateFileGDB_management (folder_location, "InventoryLayerCreation")
+        arcpy.FeatureClassToFeatureClass_conversion (input_fc, folder_location +"\\InventoryLayerCreation.gdb", out_name)
 
         arcpy.AddMessage("Data Copied To Local")
 
@@ -95,8 +95,8 @@ class CleanStreetNames(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("streetNameField","Street Name Field","Input", "Field","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("streetname_field","Street Name Field","Input", "Field","Required")
         param1.filter.list = ['Text']
         param1.parameterDependencies = [param0.name]  
         
@@ -106,15 +106,15 @@ class CleanStreetNames(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        #import re
+        import re
 
-        inputFeatureClass = parameters[0].valueAsText
-        streetNameField = parameters[1].valueAsText
+        input_fc = parameters[0].valueAsText
+        streetname_field = parameters[1].valueAsText
 
-        arcpy.CalculateField_management(inputFeatureClass, streetNameField, r"re.sub(' +', ' ',!" + streetNameField + "!)", "PYTHON_9.3")
-        arcpy.AddMessage("Removed all accidental double spaces")
+        #arcpy.CalculateField_management(input_fc, streetname_field, r"re.sub(' +', ' ',!" + streetname_field + "!)", "PYTHON_9.3")
+        #arcpy.AddMessage("Removed all accidental double spaces")
 
-        arcpy.CalculateField_management(inputFeatureClass, streetNameField, r"!" + streetNameField + "!.strip().title()", "PYTHON_9.3")
+        arcpy.CalculateField_management(input_fc, streetname_field, r"!" + streetname_field + "!.strip().title()", "PYTHON_9.3")
         arcpy.AddMessage("Stripped trailing and leading spaces and changed all to title case")
 
         streetNameFixes = [
@@ -135,7 +135,7 @@ class CleanStreetNames(object):
             ["'.'", "''"],
         ]
         for streetNameFix in streetNameFixes:
-            arcpy.CalculateField_management(inputFeatureClass, streetNameField, r"!" + streetNameField + "!.replace(" + streetNameFix[0] + "," + streetNameFix[1] + ")", "PYTHON_9.3")
+            arcpy.CalculateField_management(input_fc, streetname_field, r"!" + streetname_field + "!.replace(" + streetNameFix[0] + "," + streetNameFix[1] + ")", "PYTHON_9.3")
 
         arcpy.AddMessage("Shortened all street and road abbreviations")
 
@@ -148,8 +148,8 @@ class SearchOutsideBoundary(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("boundary","Municipality Boundary","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("boundary_fc","Municipality Boundary","Input", ["GPFeatureLayer", "GPString"],"Required")
         #param2 = arcpy.Parameter("folderPath","Output Folder","Input", "DEFolder","Required")
 
         params = [param0, param1]
@@ -173,7 +173,7 @@ class SearchForNulls(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
         
         params = [param0]
         return params
@@ -181,8 +181,8 @@ class SearchForNulls(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
-        rteIDField = parameters[1].valueAsText
+        input_fc = parameters[0].valueAsText
+        rteid_field = parameters[1].valueAsText
 
         arcpy.AddMessage("Nulls Searched")
 
@@ -195,38 +195,39 @@ class AddDesignFields(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("projectNo","Project Number","Input", "GPString","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("project_no_field","Project Number","Input", "GPString","Required")
         params = [param0, param1]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
-        projectNo = str(parameters[1].valueAsText)
+        input_fc = parameters[0].valueAsText
+        projectno_field = str(parameters[1].valueAsText)
         latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
+        arcpy.AddMessage(projectno_field)
 
-        arcpy.AddMessage(projectNo)
-
-        # Process : Add Field : arcpy.AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
-        arcpy.AddField_management(inputFeatureClass, "Ownership", "TEXT", "", "", "60", "Ownership", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "UtlCompany", "TEXT", "", "", "60", "Utility Company", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "MountRatio", "DOUBLE", "", "", "", "Mount Ratio", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "LumType", "TEXT", "", "", "40", "Luminaire Type", "NULLABLE", "NON_REQUIRED","LumType")
-        arcpy.AddField_management(inputFeatureClass, "DesignMod", "TEXT", "", "", "50", "Design Model", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "LEDDesign", "TEXT", "", "", "", "LED Designed", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "MiscParts", "TEXT", "", "", "", "Misc Parts", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(inputFeatureClass, "InstlCode", "TEXT", "", "", "10", "Install Code", "NULLABLE", "NON_REQUIRED","")
+        #Add Fields
+        arcpy.AddField_management(input_fc, "Ownership", "TEXT", "", "", "60", "Ownership", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "UtlCompany", "TEXT", "", "", "60", "Utility Company", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "MountRatio", "DOUBLE", "", "", "", "Mount Ratio", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "LumType", "TEXT", "", "", "50", "Luminaire Type", "NULLABLE", "NON_REQUIRED","LumType")
+        arcpy.AddField_management(input_fc, "DesignMod", "TEXT", "", "", "50", "Design Model", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "LEDDesign", "TEXT", "", "", "", "LED Designed", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "MiscParts", "TEXT", "", "", "", "Misc Parts", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "InstlCode", "TEXT", "", "", "10", "Install Code", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddMessage("Design Fields Added")
 
+        #Calculate Mount Ratio
         calcMR = "(!RoadWidth!+!Setback!-!ArmLength!)/float(!LampHeight!)"
-        arcpy.CalculateField_management(inputFeatureClass, "MountRatio", calcMR, "PYTHON_9.3")
+        arcpy.CalculateField_management(input_fc, "MountRatio", calcMR, "PYTHON_9.3")
         
-        rows = arcpy.UpdateCursor(inputFeatureClass, "", latLonRef)  
+        #Calculate Point X and Point Y
+        rows = arcpy.UpdateCursor(input_fc, "", latLonRef)  
         for row in rows:  
             feat = row.shape  
             coord = feat.getPart()  
@@ -236,9 +237,9 @@ class AddDesignFields(object):
             row.PointX = lon  
             rows.updateRow(row) 
         
-        arcpy.CalculateField_management(inputFeatureClass, "ProjectNo", '"' + projectNo + '"', "PYTHON_9.3")
-        arcpy.CalculateField_management(inputFeatureClass, "LumType", "!" + FixType + "!", "PYTHON_9.3")
-        arcpy.CalculateField_management(inputFeatureClass, "ProjectNo", '"' + projectNo + '"', "PYTHON_9.3")
+        #Calculate Project Number and New Luminaire Type Fields
+        arcpy.CalculateField_management(input_fc, "ProjectNo", '"' + projectno_field + '"', "PYTHON_9.3")
+        arcpy.CalculateField_management(input_fc, "LumType", "!FixType!", "PYTHON_9.3")
 
 class CalcMountRatio(object):
     def __init__(self):
@@ -249,8 +250,8 @@ class CalcMountRatio(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input","GPFeatureLayer","Required")
-        param1 = arcpy.Parameter("fieldRoadWidth","Field Containing Road Width","Input", "Field","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input","GPFeatureLayer","Required")
+        param1 = arcpy.Parameter("roadwidth_field","Field Containing Road Width","Input", "Field","Required")
         param1.filter.list = ['Short']
         param1.parameterDependencies = [param0.name]  
         
@@ -260,10 +261,10 @@ class CalcMountRatio(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
-        fieldRoadWidth = parameters[1].valueAsText
-        calcMR = "(!" + fieldRoadWidth + "!+!Setback!-!ArmLength!)/float(!LampHeight!)"
-        arcpy.CalculateField_management(inputFeatureClass, "MountRatio", calcMR, "PYTHON_9.3") 
+        input_fc = parameters[0].valueAsText
+        roadwidth_field = parameters[1].valueAsText
+        calcMR = "(!" + roadwidth_field + "!+!Setback!-!ArmLength!)/float(!LampHeight!)"
+        arcpy.CalculateField_management(input_fc, "MountRatio", calcMR, "PYTHON_9.3") 
 
 
 class CalcXY(object):
@@ -275,7 +276,7 @@ class CalcXY(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
         param1 = arcpy.Parameter("pointXField","Point X Field","Input", "Field","Required")
         param1.filter.list = ['Double']
         param1.parameterDependencies = [param0.name]  
@@ -289,13 +290,14 @@ class CalcXY(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
+        input_fc = parameters[0].valueAsText
         pointXField = parameters[1].valueAsText
         pointYField = parameters[2].valueAsText
 
+        #latLonRef = "C:\\Users\\ekitteridge\\AppData\\Roaming\\Esri\\Desktop10.6\\ArcMap\\Coordinate Systems\\WGS 1984.prj"  
         latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
         
-        rows = arcpy.UpdateCursor(inputFeatureClass, "", latLonRef)  
+        rows = arcpy.UpdateCursor(input_fc, "", latLonRef)  
         for row in rows:  
             feat = row.shape  
             coord = feat.getPart()  
@@ -317,12 +319,12 @@ class CalcSeqNumbersAlt(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("inputFeatureClass","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("rteIDField","RTE ID Field","Input", "Field","Required")
+        param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("rteid_field","RTE ID Field","Input", "Field","Required")
         param1.filter.list = ['Short']
         param1.parameterDependencies = [param0.name]  
-        param2 = arcpy.Parameter("startingNumber","Start Number","Input", "GPLong","Required")
-        param3 = arcpy.Parameter("intervalNumber","Interval Number","Input", "GPLong","Required")
+        param2 = arcpy.Parameter("starting_number","Start Number","Input", "GPLong","Required")
+        param3 = arcpy.Parameter("interval_number","Interval Number","Input", "GPLong","Required")
         
         params = [param0, param1, param2, param3]
         return params
@@ -330,16 +332,16 @@ class CalcSeqNumbersAlt(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        inputFeatureClass = parameters[0].valueAsText
-        rteIDField = parameters[1].valueAsText
-        startingNumber = parameters[2].valueAsText
-        intervalNumber = parameters[3].valueAsText
+        input_fc = parameters[0].valueAsText
+        rteid_field = parameters[1].valueAsText
+        starting_number = parameters[2].valueAsText
+        interval_number = parameters[3].valueAsText
 
         codeblock = """rec=0 
 def autoIncrement(): 
  global rec 
- pStart = """ + startingNumber + """    
- pInterval = """ + intervalNumber + """  
+ pStart = """ + starting_number + """    
+ pInterval = """ + interval_number + """  
  if (rec == 0):  
   rec = pStart  
  else:  
@@ -347,5 +349,5 @@ def autoIncrement():
  return rec
  """
 
-        arcpy.CalculateField_management(inputFeatureClass, rteIDField, "autoIncrement()" , "PYTHON_9.3", codeblock)
+        arcpy.CalculateField_management(input_fc, rteid_field, "autoIncrement()" , "PYTHON_9.3", codeblock)
         arcpy.AddMessage("Calculated sequential numbers in field starting at 1, 2, 3...")

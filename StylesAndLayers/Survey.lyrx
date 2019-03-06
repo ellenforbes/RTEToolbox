@@ -1,0 +1,1835 @@
+{
+  "type" : "CIMLayerDocument",
+  "version" : "2.3.0",
+  "build" : 15769,
+  "layers" : [
+    "CIMPATH=map/airmont_ny_20190306_survey.xml"
+  ],
+  "layerDefinitions" : [
+    {
+      "type" : "CIMFeatureLayer",
+      "name" : "Airmont_NY_20190306_Survey",
+      "uRI" : "CIMPATH=map/airmont_ny_20190306_survey.xml",
+      "sourceModifiedTime" : {
+        "type" : "TimeInstant"
+      },
+      "useSourceMetadata" : true,
+      "description" : "Airmont_NY_20190306_Survey",
+      "expanded" : true,
+      "layer3DProperties" : {
+        "type" : "CIM3DLayerProperties",
+        "castShadows" : true,
+        "isLayerLit" : true,
+        "layerFaceCulling" : "None",
+        "maxDistance" : -1,
+        "minDistance" : -1,
+        "preloadTextureCutoffHigh" : 0,
+        "preloadTextureCutoffLow" : 0.25,
+        "textureCutoffHigh" : 0.25,
+        "textureCutoffLow" : 1,
+        "useCompressedTextures" : true,
+        "verticalExaggeration" : 1,
+        "verticalUnit" : {
+          "uwkid" : 9001
+        },
+        "lighting" : "OneSideDataNormal"
+      },
+      "layerType" : "Operational",
+      "showLegends" : true,
+      "visibility" : true,
+      "displayCacheType" : "Permanent",
+      "maxDisplayCacheAge" : 5,
+      "popupInfo" : {
+        "type" : "CIMPopupInfo",
+        "title" : "{StreetName}",
+        "mediaInfos" : [
+          {
+            "type" : "CIMTableMediaInfo",
+            "row" : 1,
+            "refreshRateUnit" : "esriTimeUnitsSeconds",
+            "fields" : [
+              "OBJECTID",
+              "RTE_ID",
+              "LuminaireType",
+              "DecoSubtype",
+              "Technology",
+              "LampWattage",
+              "LampHeight",
+              "ArmLength",
+              "Setback",
+              "RdWidth",
+              "RdClass",
+              "PedestrianActivity",
+              "StreetName",
+              "Intersection",
+              "ArmOrientation",
+              "WireLocation",
+              "HighVoltage",
+              "PoleMaterial",
+              "PoleUsage",
+              "UtlPoleID",
+              "Problems",
+              "SurvComments",
+              "SurvDate",
+              "Surveyor",
+              "Ownership",
+              "LDC",
+              "ProjectNo",
+              "POINT_X",
+              "POINT_Y",
+              "Name",
+              "FolderPath",
+              "MountRatio",
+              "DesignModel",
+              "LEDDesigned",
+              "Supplier",
+              "MiscParts",
+              "Status",
+              "WireReplaced",
+              "FuseReplaced",
+              "FuseHolderReplaced",
+              "ArmMods",
+              "SecondaryConnectionRefresh",
+              "PowerAvailable",
+              "MiscMods",
+              "Operator",
+              "InstlComments",
+              "InstlDate",
+              "ReportedIssue",
+              "ServiceType",
+              "SvcComments",
+              "SvcDate",
+              "GlobalID"
+            ]
+          }
+        ]
+      },
+      "showPopups" : true,
+      "serviceLayerID" : -1,
+      "refreshRate" : -1,
+      "refreshRateUnit" : "esriTimeUnitsSeconds",
+      "autoGenerateFeatureTemplates" : true,
+      "featureTable" : {
+        "type" : "CIMFeatureTable",
+        "displayField" : "StreetName",
+        "editable" : true,
+        "dataConnection" : {
+          "type" : "CIMStandardDataConnection",
+          "workspaceConnectionString" : "DATABASE=..\\..\\Municipality\\Airmont_NY\\Airmont_NY.gdb",
+          "workspaceFactory" : "FileGDB",
+          "dataset" : "Airmont_NY_20190306_Survey",
+          "datasetType" : "esriDTFeatureClass"
+        },
+        "studyAreaSpatialRel" : "esriSpatialRelUndefined",
+        "searchOrder" : "esriSearchOrderSpatial"
+      },
+      "featureTemplates" : [
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Building Light - Decorative",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Building Light - Decorative"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Building Light - Other",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Building Light - Other"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Building Light - Wallpack",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Building Light - Wallpack"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Cobrahead",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Cobrahead"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Acorn Post Top",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Acorn Post Top"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Bell Downlighting",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Bell Downlighting"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Caged Acorn",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Caged Acorn"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Globe Post Top",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Globe Post Top"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Lantern Pendant",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Lantern Pendant"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Lantern Post Top",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Lantern Post Top"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Lantern Side Mount",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Lantern Side Mount"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Other Downlighting",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Other Downlighting"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Other Post Top",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Other Post Top"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Shoe Box",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Shoe Box"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Tear Drop",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Tear Drop"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Decorative - Top Hat",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Decorative - Top Hat"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Floodlight - Tenon",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Floodlight - Tenon"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Floodlight - Yoke",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Floodlight - Yoke"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "NEMA Head or Dusk to Dawn",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "NEMA Head or Dusk to Dawn"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "New Light Request",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "New Light Request"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "No Light",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "No Light"
+            ]
+          }
+        },
+        {
+          "type" : "CIMFeatureTemplate",
+          "name" : "Offset Roadway",
+          "tags" : "Point",
+          "toolProgID" : "2a8b3331-5238-4025-972e-452a69535b06",
+          "defaultValues" : {
+            "type" : "PropertySet",
+            "propertySetItems" : [
+              "fixtype",
+              "Offset Roadway"
+            ]
+          }
+        }
+      ],
+      "htmlPopupEnabled" : true,
+      "selectable" : true,
+      "featureCacheType" : "Session",
+      "labelClasses" : [
+        {
+          "type" : "CIMLabelClass",
+          "expression" : "$feature.StreetName",
+          "expressionEngine" : "Arcade",
+          "featuresToLabel" : "AllVisibleFeatures",
+          "maplexLabelPlacementProperties" : {
+            "type" : "CIMMaplexLabelPlacementProperties",
+            "featureType" : "Point",
+            "avoidPolygonHoles" : true,
+            "canOverrunFeature" : true,
+            "canPlaceLabelOutsidePolygon" : true,
+            "canRemoveOverlappingLabel" : true,
+            "canStackLabel" : true,
+            "connectionType" : "Unambiguous",
+            "constrainOffset" : "NoConstraint",
+            "contourAlignmentType" : "Page",
+            "contourLadderType" : "Straight",
+            "contourMaximumAngle" : 90,
+            "enableConnection" : true,
+            "enablePointPlacementPriorities" : true,
+            "featureWeight" : 0,
+            "fontHeightReductionLimit" : 4,
+            "fontHeightReductionStep" : 0.5,
+            "fontWidthReductionLimit" : 90,
+            "fontWidthReductionStep" : 5,
+            "graticuleAlignmentType" : "Straight",
+            "keyNumberGroupName" : "Default",
+            "labelBuffer" : 15,
+            "labelLargestPolygon" : true,
+            "labelPriority" : -1,
+            "labelStackingProperties" : {
+              "type" : "CIMMaplexLabelStackingProperties",
+              "stackAlignment" : "ChooseBest",
+              "maximumNumberOfLines" : 3,
+              "minimumNumberOfCharsPerLine" : 3,
+              "maximumNumberOfCharsPerLine" : 24,
+              "separators" : [
+                {
+                  "type" : "CIMMaplexStackingSeparator",
+                  "separator" : " ",
+                  "splitAfter" : true
+                },
+                {
+                  "type" : "CIMMaplexStackingSeparator",
+                  "separator" : ",",
+                  "visible" : true,
+                  "splitAfter" : true
+                }
+              ]
+            },
+            "lineFeatureType" : "General",
+            "linePlacementMethod" : "OffsetCurvedFromLine",
+            "maximumLabelOverrun" : 36,
+            "maximumLabelOverrunUnit" : "Point",
+            "minimumFeatureSizeUnit" : "Map",
+            "multiPartOption" : "OneLabelPerPart",
+            "offsetAlongLineProperties" : {
+              "type" : "CIMMaplexOffsetAlongLineProperties",
+              "placementMethod" : "BestPositionAlongLine",
+              "labelAnchorPoint" : "CenterOfLabel",
+              "distanceUnit" : "Percentage",
+              "useLineDirection" : true
+            },
+            "pointExternalZonePriorities" : {
+              "type" : "CIMMaplexExternalZonePriorities",
+              "aboveLeft" : 4,
+              "aboveCenter" : 2,
+              "aboveRight" : 1,
+              "centerRight" : 3,
+              "belowRight" : 5,
+              "belowCenter" : 7,
+              "belowLeft" : 8,
+              "centerLeft" : 6
+            },
+            "pointPlacementMethod" : "AroundPoint",
+            "polygonAnchorPointType" : "GeometricCenter",
+            "polygonBoundaryWeight" : 0,
+            "polygonExternalZones" : {
+              "type" : "CIMMaplexExternalZonePriorities",
+              "aboveLeft" : 4,
+              "aboveCenter" : 2,
+              "aboveRight" : 1,
+              "centerRight" : 3,
+              "belowRight" : 5,
+              "belowCenter" : 7,
+              "belowLeft" : 8,
+              "centerLeft" : 6
+            },
+            "polygonFeatureType" : "General",
+            "polygonInternalZones" : {
+              "type" : "CIMMaplexInternalZonePriorities",
+              "center" : 1
+            },
+            "polygonPlacementMethod" : "CurvedInPolygon",
+            "primaryOffset" : 1,
+            "primaryOffsetUnit" : "Point",
+            "removeExtraWhiteSpace" : true,
+            "repetitionIntervalUnit" : "Map",
+            "rotationProperties" : {
+              "type" : "CIMMaplexRotationProperties",
+              "rotationType" : "Arithmetic",
+              "alignmentType" : "Straight"
+            },
+            "secondaryOffset" : 100,
+            "strategyPriorities" : {
+              "type" : "CIMMaplexStrategyPriorities",
+              "stacking" : 1,
+              "overrun" : 2,
+              "fontCompression" : 3,
+              "fontReduction" : 4,
+              "abbreviation" : 5
+            },
+            "thinningDistanceUnit" : "Point",
+            "truncationMarkerCharacter" : ".",
+            "truncationMinimumLength" : 1,
+            "truncationPreferredCharacters" : "aeiou"
+          },
+          "name" : "Class 1",
+          "priority" : -1,
+          "standardLabelPlacementProperties" : {
+            "type" : "CIMStandardLabelPlacementProperties",
+            "featureType" : "Line",
+            "featureWeight" : "Low",
+            "labelWeight" : "High",
+            "numLabelsOption" : "OneLabelPerName",
+            "lineLabelPosition" : {
+              "type" : "CIMStandardLineLabelPosition",
+              "above" : true,
+              "inLine" : true,
+              "parallel" : true
+            },
+            "lineLabelPriorities" : {
+              "type" : "CIMStandardLineLabelPriorities",
+              "aboveStart" : 3,
+              "aboveAlong" : 3,
+              "aboveEnd" : 3,
+              "centerStart" : 3,
+              "centerAlong" : 3,
+              "centerEnd" : 3,
+              "belowStart" : 3,
+              "belowAlong" : 3,
+              "belowEnd" : 3
+            },
+            "pointPlacementMethod" : "AroundPoint",
+            "pointPlacementPriorities" : {
+              "type" : "CIMStandardPointPlacementPriorities",
+              "aboveLeft" : 2,
+              "aboveCenter" : 2,
+              "aboveRight" : 1,
+              "centerLeft" : 3,
+              "centerRight" : 2,
+              "belowLeft" : 3,
+              "belowCenter" : 3,
+              "belowRight" : 2
+            },
+            "rotationType" : "Arithmetic",
+            "polygonPlacementMethod" : "AlwaysHorizontal"
+          },
+          "textSymbol" : {
+            "type" : "CIMSymbolReference",
+            "symbol" : {
+              "type" : "CIMTextSymbol",
+              "blockProgression" : "TTB",
+              "depth3D" : 1,
+              "extrapolateBaselines" : true,
+              "fontEffects" : "Normal",
+              "fontEncoding" : "Unicode",
+              "fontFamilyName" : "Tahoma",
+              "fontStyleName" : "Regular",
+              "fontType" : "Unspecified",
+              "haloSize" : 1,
+              "height" : 10,
+              "hinting" : "Default",
+              "horizontalAlignment" : "Left",
+              "kerning" : true,
+              "letterWidth" : 100,
+              "ligatures" : true,
+              "lineGapType" : "ExtraLeading",
+              "symbol" : {
+                "type" : "CIMPolygonSymbol",
+                "symbolLayers" : [
+                  {
+                    "type" : "CIMSolidFill",
+                    "enable" : true,
+                    "color" : {
+                      "type" : "CIMRGBColor",
+                      "values" : [
+                        0,
+                        0,
+                        0,
+                        100
+                      ]
+                    }
+                  }
+                ]
+              },
+              "textCase" : "Normal",
+              "textDirection" : "LTR",
+              "verticalAlignment" : "Bottom",
+              "verticalGlyphOrientation" : "Right",
+              "wordSpacing" : 100,
+              "billboardMode3D" : "FaceNearPlane"
+            }
+          },
+          "useCodedValue" : true,
+          "visibility" : true,
+          "iD" : -1
+        }
+      ],
+      "renderer" : {
+        "type" : "CIMUniqueValueRenderer",
+        "colorRamp" : {
+          "type" : "CIMRandomHSVColorRamp",
+          "colorSpace" : {
+            "type" : "CIMICCColorSpace",
+            "url" : "Default RGB"
+          },
+          "maxH" : 360,
+          "minS" : 15,
+          "maxS" : 30,
+          "minV" : 99,
+          "maxV" : 100,
+          "minAlpha" : 100,
+          "maxAlpha" : 100
+        },
+        "defaultLabel" : "<all other values>",
+        "defaultSymbol" : {
+          "type" : "CIMSymbolReference",
+          "symbol" : {
+            "type" : "CIMPointSymbol",
+            "symbolLayers" : [
+              {
+                "type" : "CIMPictureMarker",
+                "enable" : true,
+                "anchorPointUnits" : "Relative",
+                "dominantSizeAxis3D" : "Z",
+                "size" : 12,
+                "billboardMode3D" : "FaceNearPlane",
+                "invertBackfaceTexture" : true,
+                "scaleX" : 1,
+                "textureFilter" : "Picture",
+                "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWVJREFUOI2tk88rw3EYx19fZr/aD6wmZlsrKWkunOTioDgg2g4Orv4AueDif5Cm3KQcpnEQmsMkJpYkXBQ1fDdia9th+5YfXwdks69RvOtzefq8XvU8PY+KP0b17wLZiw4YuZXwiFns1RruXXpWEZgW/CRLCmQvrp0HQtdZnFYt2HUQl3DuJ2kzljMqe+kW/OwpCuQeNAGRrQYDjiHH54dGoN0CcQnTfJSgPEiTEOCmSLCUYtKux9FiVu61VgtdNRjmoviA3iLBnUSfp14ZzpdoyuhQbMGsprI0/pYGI2aLDlsih1ggeHwm8xtBVQXpRI5q+CKIZjkG3D8JjtIcfsAFgtlLQlPNdAK2Erw0c846fO5D/hA3BsKYltsZB6wKcM53wUQ4yW5+MX+RYisiu+5Nxk66aAX6gToggUxw+IC1hSsyQOQ7AUDkNIUo+HkCtoEXQADUwNn7K4jSMcWARYW6Yv58ja/NJGb3V8V6eQAAAABJRU5ErkJggg=="
+              }
+            ],
+            "haloSize" : 1,
+            "scaleX" : 1,
+            "angleAlignment" : "Display"
+          }
+        },
+        "defaultSymbolPatch" : "Default",
+        "fields" : [
+          "FixType"
+        ],
+        "groups" : [
+          {
+            "type" : "CIMUniqueValueGroup",
+            "classes" : [
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Building Light - Decorative",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAS9JREFUSIljYaATYBn+FonyMZxXlWR4RqnBd14y8L76wGCH0yJvQwah+dkMBpRaFDGB4erKYwj+CIgjdBA/lYHh6TtUMU42BgZZYQaGQDMGBlc9Kll09AYDw92X2OWm72JgSHdlYJiRSgWLkIG2LAODtBADw4UHDAyvPkLEZu5mYHDRZWAIsaCiRQkODAwlvgwMX34wMLg2MzCcuA0Rn72XyhbBAA8HA0OcPcKiM3cJ6yE71YnxI9jvv9LQom8/EWwuNhpadPQmgq0sQWWLDl+H0NefMDAsOIAQJ5QQSLZo0xkIRgYmygwMxT5UtggGOFgZGFQlGRj8TRkYKgIYGLjYqWDRncnkOIUMi6gFBs6iE7cZBEoWU27wtScMwngtuvGMgf8GxRU5JhgBcUQrAAAjZUIRZ1DndQAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Building Light - Decorative"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Building Light - Other",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAbZJREFUSInllUsohFEUx38yVh7DTB7D2MgrNkQ2GrakRjZSlKwnijw2NpYsJMpGsmAmNrImC3lEyqsMoliMCWWQycwYr8VNn89gcCWP/+r8zz2dX+fe+31XwzdJ8/dBsVGsphlwyjbeOyby5JyiV0FlueiGLOTIgqp62BxbUPw/OKOXdHcPtjkYnYetQ/BeQ3w0mDKhvhRSE74A5PODuQsm19V55xms7sPANFgboKJAEtQ+qoYUZoBRD1Mb4HKD5xpq+mCnR+Q/BfL5oX9S8Y1l0F0rYscpZDXBpQeufGKyjspPgtYORJNHWUqU2KiH8nwYmRV+afetTkFAp261N+rUPvGJdz2r/RAoJlztL64gTqv4S8+T2ggJULoBNKFwcyv81AZUm0R8dw8zdqU2yygB0keCOR/Gl4S3DMKhS5yPbQ7sDpEPCYEakwQIoLcOFnbg6FxsXZs1sKatHPJSJEFJOljphNYRmFgGt1dZy06GFjPUFgfr8s5fkCEGhuvBfysmc3shXgu6IBfgw6BHhYVC8htf/5eBZBQAWtwlunlYvrHdgWr2ANC2E+229EMeqJ/18P0q0AN3R3n3v5l1BwAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Building Light - Other"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Building Light - Wallpack",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAc5JREFUSInllU9I02EYxz/7EzLXbBqKKxiM2kSYNSN0eigYxIJ17OBFgjoketRr0FEQoUuYeEjopHSXOf/MS+72Y5XmmjCSGiYRq0QPbtjh2XgbNedvSwV9Ls/3fZ7nfT+87/P+3p+ZYzLz6Qc11qG5HaSrXXj9K7atDLdKgkLtNLwcwFctqOcZK1Nv1PgM9Khg90chsyP6+SNouQQb3+DhmKqZeAyuJljfhL4Jidlr4fWgDtDPXZh/JzqWFNCMpmIg4/6g5AvxO9d07sjvhshb0VoKHtyGcLy4JhwXkJYqnqcL1OVRWktBNgcL74trFldgL1cM+nPeoUB+DxgMsL8P8U9yPD/yPWu9DB++wK9dWP4oeZD6Tr07qreCxwGJtADGZlVupBfuDYsej8D3bdHuZmg4rxMEcgyJ/BsxvSze1QShG+JTWypeOIVSVhY0GRWdzYkPXlf+RUTFC/UVgf51g4L5x+muT0Dl6g8F8jrBZpGmA5hNEPCKDnjhnEluHYC1BtqcFYKMBui4qj5GvxvqLKJtFuhugaVVGd+8AiZjhSCAuSelc9Gn5WbrAP0vOzlQLIl96FX1C69+5uKBoLU0F9aq/pH/bWegR0dlvwHD4n0FhmKNiwAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Building Light - Wallpack"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Cobrahead",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 19,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA1dJREFUSInllW1MU2cUx3+llfJiqYAtheKsESH4MiSKL6hLEIx82DQQjFEjGBNFTUai02iIiUim+6IzJpMtZMORgBpRF5f4HhC1+C4GrGB1ZnZuNlujLRXaUlrxw7W2F2oh0+yD+3/6P+ece37PfXLuc2X8R5L9b0GxQIFmFHPVMSgi5MgdLpzPbNhevKQZOAk43gckjQxn85w08nctQzcjBV1gsr+f/iYD88oPs+rO7zR4vfz4b0Ax2jgOHt3IzOw0tMEKJBIkuVNIvzGF9F9uMWbND8x+/pINQO9wQbJxKur1XzM/KZaoEJt5q4Is0lMTic/dieTvLlYPC5SopPL4Fmb5IH1e+LkZGq7BIzP0A2Pi4fNpsG4BKN9sZVIy6upSclZ8x/puB98PBdLkZZCfqWM0gKMX8nfDlU5xkckC+gdQdxkuVsBohRBfNB3dzPGsbLxHLQEDMgiUFMf63cv51LfeWi+G5EwCbRz8ehvsTjA8hfJDUF3qr6lcyuQWI4UuN3XvBI1PYE5yHFIAVx/81OTPffUF7Fkp+DYTZG+HqTpQxYh7zJ6AIjWRgnZTCJBGidrn203gdPtzpXl+nzEW7LUgDRvYASQSSIpF3W7yxwaBIsKJ9nlbjziXGCteB4P4FBXQJyjI+wqPz8crxDmnG0ZG+NctRuHoouWDQZ6APkFB3S7evkeKBsJl4H7zyFUjLM4SvNkKORUQFgbzJ8OxTRAVALQ7EZ3HIJC1B4PFTqYqRvg+imbBIb2QW1sNT58L8X2nhO8LL1jsYkibCXrcNIYG2fim6hyFO5YIZ7y3GC51wF8v4J8u+LJGXD9CKtQEquo8lluPOBASZDDTqX2I/omFhToVaEbB9V2wsRZOtYqnMGMsfFsCn6X7Y7cfw29mTgLWkCCAP59RVFbDg/oytIpISI6Hhk3Q2wdmm3BbqJX+28AnsxXKj9DRZGDdwJ5BQfctdGemklt8gEv7SkjQqYS4fAT4/EDd+wO21fO428M8wDssEEBdC8Yl00jbUseZjE/IKl2AbOANAMJwVJ3F9dDMhdN3KQTxWA8JAmi4QxeQrVUyt6yGiohwJioiUcqkyPs8OO0OrL0eWqPlbD1xE2OoXsP6le8/ix7IG7LwfUEfQh8f6DVZAgcCi7Wp8gAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Cobrahead"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Acorn Post Top",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Acorn Post Top"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Bell Downlighting",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Bell Downlighting"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Caged Acorn",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Caged Acorn"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Globe Post Top",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Globe Post Top"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Lantern Pendant",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAr5JREFUSIljYaAxYBlxFvBpKok2Xr/3up6BgeETVS0w0ZFylRThnV2faS9f0b/H7frj1ylPn34+Tg0LGG0MZae6WCpH1abb8TMxMTLsmBmjVTlhz/qdR+/OvXTrZTXZFsgIc0orKYptac110rMxkmOCiTMzMTJ0FbmKO5krFddO3md35uozfwYGhnckWWBjKBcnJcrbNb3OW1yInxOrGg9rZXZ9NXGbhNoN51+8+ZR+6ebrHcRYwGptKLsiyEXDszDOkvPvv/8MG/bdYGBgYGDg42ZncDJXRFEsKcrDsG1atFzN5P0rONnYVpy8/DSTgYHhP1YLjDXEdXm4Odb3l3soG2pKMDAwMDB8//GbITB/JQMDAwODtooow5X1WRguYmZiZGjPd+LfdUwhtX7qfqunz955PH7z7RmGBQL8XItXdIcoiwhyYQ0SQsDNSomJj4dNt23W4ZmPD97yxbBAUUZw9cnLT/W97VTJsoCBgYHhxMUnDCJCnDNhfBQLfn7+M2H7kTs13naqHORacPzik3erdl7dgtWCxbsufQ100bz3999/LWYmRpINf//pB8OXbz+vI4thpCJ+bvYNh8481HI0UyDZgm2HbzNwsLLMwWsBAyND99bDt4sdzRTY0aU+f/3FsOXgLRQxUx1pBnFhbgYGBgaGXcfuvl+378ZivBYs2HDhQ4ib9v3//xk0GNFC6dHzjwy+OctRxNZPDGcIcNJg+P3nH8PLN1/uMDAw/MXvAwYGBk52lu2nrzzVMNOVxiaNFRw4/YCBiYlhJbo4VgvYGf92bjpwM8dMV5qVh4uN4f/leoIWbNx/48P2I3dnEGXBnE1XXkZ66d5nYGBQI+x2CLjz8P09BgaGr0RZwMDAwMD4///ezOZtypzshEv0L99/Mfz883c7Njmcupdtv5LFwMCAWfCQCAZdnUwyAADMLeQBy9UKTgAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Lantern Pendant"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Lantern Post Top",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAr5JREFUSIljYaAxYBlxFvBpKok2Xr/3up6BgeETVS0w0ZFylRThnV2faS9f0b/H7frj1ylPn34+Tg0LGG0MZae6WCpH1abb8TMxMTLsmBmjVTlhz/qdR+/OvXTrZTXZFsgIc0orKYptac110rMxkmOCiTMzMTJ0FbmKO5krFddO3md35uozfwYGhnckWWBjKBcnJcrbNb3OW1yInxOrGg9rZXZ9NXGbhNoN51+8+ZR+6ebrHcRYwGptKLsiyEXDszDOkvPvv/8MG/bdYGBgYGDg42ZncDJXRFEsKcrDsG1atFzN5P0rONnYVpy8/DSTgYHhP1YLjDXEdXm4Odb3l3soG2pKMDAwMDB8//GbITB/JQMDAwODtooow5X1WRguYmZiZGjPd+LfdUwhtX7qfqunz955PH7z7RmGBQL8XItXdIcoiwhyYQ0SQsDNSomJj4dNt23W4ZmPD97yxbBAUUZw9cnLT/W97VTJsoCBgYHhxMUnDCJCnDNhfBQLfn7+M2H7kTs13naqHORacPzik3erdl7dgtWCxbsufQ100bz3999/LWYmRpINf//pB8OXbz+vI4thpCJ+bvYNh8481HI0UyDZgm2HbzNwsLLMwWsBAyND99bDt4sdzRTY0aU+f/3FsOXgLRQxUx1pBnFhbgYGBgaGXcfuvl+378ZivBYs2HDhQ4ib9v3//xk0GNFC6dHzjwy+OctRxNZPDGcIcNJg+P3nH8PLN1/uMDAw/MXvAwYGBk52lu2nrzzVMNOVxiaNFRw4/YCBiYlhJbo4VgvYGf92bjpwM8dMV5qVh4uN4f/leoIWbNx/48P2I3dnEGXBnE1XXkZ66d5nYGBQI+x2CLjz8P09BgaGr0RZwMDAwMD4///ezOZtypzshEv0L99/Mfz883c7Njmcupdtv5LFwMCAWfCQCAZdnUwyAADMLeQBy9UKTgAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Lantern Post Top"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Lantern Side Mount",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAr5JREFUSIljYaAxYBlxFvBpKok2Xr/3up6BgeETVS0w0ZFylRThnV2faS9f0b/H7frj1ylPn34+Tg0LGG0MZae6WCpH1abb8TMxMTLsmBmjVTlhz/qdR+/OvXTrZTXZFsgIc0orKYptac110rMxkmOCiTMzMTJ0FbmKO5krFddO3md35uozfwYGhnckWWBjKBcnJcrbNb3OW1yInxOrGg9rZXZ9NXGbhNoN51+8+ZR+6ebrHcRYwGptKLsiyEXDszDOkvPvv/8MG/bdYGBgYGDg42ZncDJXRFEsKcrDsG1atFzN5P0rONnYVpy8/DSTgYHhP1YLjDXEdXm4Odb3l3soG2pKMDAwMDB8//GbITB/JQMDAwODtooow5X1WRguYmZiZGjPd+LfdUwhtX7qfqunz955PH7z7RmGBQL8XItXdIcoiwhyYQ0SQsDNSomJj4dNt23W4ZmPD97yxbBAUUZw9cnLT/W97VTJsoCBgYHhxMUnDCJCnDNhfBQLfn7+M2H7kTs13naqHORacPzik3erdl7dgtWCxbsufQ100bz3999/LWYmRpINf//pB8OXbz+vI4thpCJ+bvYNh8481HI0UyDZgm2HbzNwsLLMwWsBAyND99bDt4sdzRTY0aU+f/3FsOXgLRQxUx1pBnFhbgYGBgaGXcfuvl+378ZivBYs2HDhQ4ib9v3//xk0GNFC6dHzjwy+OctRxNZPDGcIcNJg+P3nH8PLN1/uMDAw/MXvAwYGBk52lu2nrzzVMNOVxiaNFRw4/YCBiYlhJbo4VgvYGf92bjpwM8dMV5qVh4uN4f/leoIWbNx/48P2I3dnEGXBnE1XXkZ66d5nYGBQI+x2CLjz8P09BgaGr0RZwMDAwMD4///ezOZtypzshEv0L99/Mfz883c7Njmcupdtv5LFwMCAWfCQCAZdnUwyAADMLeQBy9UKTgAAAABJRU5ErkJggg=="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Lantern Side Mount"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Other Downlighting",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Other Downlighting"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Other Post Top",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Other Post Top"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Shoe Box",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Shoe Box"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Tear Drop",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAyZJREFUSInllWtIU2EYx//n7OZMt7ysZc6lW9amrZiFlY6FomaJdCGKrvShFM0o6kNF2oioqD4oiJVdIBBiFeUUcymllbdMwbwMLXVT5oY2mWZqWc71IVqzHS9FQdDz6eX//M/ze89znvO+dPzloP93AI5UxDvTqreoAAz9UcDKpQti/Xw9b6hS1i48kfkkrtVo2W8yfaj5EwBCIQ/IiVkj3pmRrOSSJIHHubtDTmY9yS+p6rzV9Lbv1G8DBD5sf1HQvKJzh6KXKcKE5HedRhK4dDSWH71KdCwju0xZrzNvBGD9JYBCLty7gOd56erpBL43l03piY8Us5Yv5iv2ZWgaevuHkpveWB7PBsCIlAeot8RI1h/Zs4ZdUN42Kclk0CDgcyAL5oMgAD+eB4qv7BKmZ5er2UymurbZlALATglYIeHLPOa45WcejxfLpfMxbpvA5sN3KXcfuoiHB5nbsSTQBzSSwIXD0dzS6sADqpzyCJPZGm/sHzW7AOZy3fPUl7eKfb3cXQqymDRIRTwYegbwfngMug4LEtPuQKc5CAb92+eJixCRHA+m7Pz1ilzj87eJLoAggdf92mbT8gRlsAtAwOeg4X4yRj99QVxSHqoajGjvtqKs1oB1kWKH72VjD3y92bmULRr7MJ6lrexIT1AGu1H2BYC7GwM7N8hQ1WAEALTqLZMANY091nsluiJKQF5p08jmGKneNmEPoZHEVAx4cX5M1TvriGM9MPQJw6Njrc5elynizmFpXtR3h0SFB04JcC7qPMLFFe1wY9BvTgsAgcuPKtqPRYUHspxlm80OY+8QjL3vkaN+5dAVYULHurS6c+BhWVvetIDbmteDW+NCDXY7JM56l3kQwtjMSd5N0RKsXiYAAHwZn0Bf/3AHANv0bwCAzaJr61pMkrAQP5ccg04iyN8L2+JDkZ6kdOjP6rpAknD5aSgBLMJ2sfDZm7RwmT/D3qyisrhEQXnboLay89qsADcLW/p2bJAZACyeVXUAHd0DegAjP+tTHnaE3f405WyxmM2a+UQf/vgZY+M2LVVuyqfvaFtSAaTOWH2G+Ofu5F+Or9/bDeWX1VimAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Tear Drop"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Decorative - Top Hat",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAq5JREFUSIljYaAxYBlxFvBpKok2Xr/3up6BgeETVS0w0ZFylRThnV2faS9f0b/H7frj1ylPn34+Tg0LGG0MZae6WCpH1abb8TMxMTLsmBmjVTlhz/qdR+/OvXTrZTXZFsgIc0orKYptac110rMxkmOCiTMzMTJ0FbmKO5krFddO3md35uozfwYGhnckWWBjKBcnJcrbNb3OW1yInxOrGg9rZXZ9NXGbhNoN51+8+ZR+6ebrHcRYwGptKLsiyEXD09JAlvPQ2Yf4PMng66DOsG1atFzN5P0rONnYVpy8/DSTgYHhP1YLjDXEdXm4Odb3l3soG2pKMPhkL2PYeug2Xgs+n6xk4OFiY2jPd+LfdUwhtX7qfqunz955PH7z7RmGBQL8XItXdIcoiwhyMTAwMDAwMzMxMDMxMjAwMDD8/Qd3FFyMgYGBgZERwXazUmLi42HTbZt1eObjg7d8MSxQlBFcffLyU31vO1UGBgYGho2TIuByNnHzGI6ef8zAwMDA8GBXAYOMOB9WH524+IRBRIhzJtYg+vn5z4TtR+7UeNupcuANFzzg+MUn71btvLoFqwWLd136Guiiee/vv/9ayMFALHj/6QfDl28/ryOLYaQifm72DYfOPNRyNFMg2YJth28zcLCyzMFrAQMjQ/fWw7eLHc0U2Em1YNexu+/X7buxGK8FCzZc+BDipn3//38GDUYSQun3n38ML998ucPAwPAXrwUMDAwMnOws209feaphpitNtAUHTj9gYGJiWIkujtUCdsa/nZsO3Mwx05VmhYkdWZSE14KN+2982H7k7gyiLJiz6crLSC/d+wwMDGqEXA4Ddx6+v8fAwPCVKAsYGBgYGP//35vZvE2Zk51wif7l+y+Gn3/+bscmh1P3su1XshgYGLIImk4ADLo6mWQAADzZ3Xkp7Z1EAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Decorative - Top Hat"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Floodlight - Tenon",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAtVJREFUSIljYaAxYBlxFvCpaso13r7+qJ6BgeETVS0wMFF1FZcUmV1cHy/fUjHb7e71xylPn746Tg0LGM1sdKbauxhHFdXG8TMxMTKs2NGp1Vo5e/3+nWfmXrt0t5psC2RkhKVllaS3VLam6Jnb6DDBxJmZmRjqutLFbZ2Mittr59ldPHPTn4GB4R1JFpjYaMdJSYl2dU8vFBcQ4sWqxtHDlF1LX8kmP6Hr/KsX79KvXrq7gxgLWM2tdVZ4B9l5pheGcP77959h+4YjOH3p4mXBsHRbu1xnzdwV7JysK86dvJHJwMDwH6sFusZKujw8POub+7OVdQ1VGRgYGBh+//rNkBBYh9OC66/XMwiJ8DNUtafyH9h1JrWrfr7Vq6evPR4/fvMMwwIBAYHFs1bUKguJ8GM1jIubg8HOxRhFjI2dFc52cDNh4uXj0p3QtnTm48dvfDEskFOUXH325HV9V28LrBaISQgxLNzQjNM3DAwMDGdPXGcQFOGdCeOjWMD08/eEfdtP17h6W3Bg0/zqxTuG+IBaOD8y0YPBw98aRc2Z49febVy1fwtWCxYv3vXVK9D23t+//7SYmZkY0MG3rz8Ydmw8Cueb2+iiyH94/5nh65dv15HFMFIRHz/XhhOHLmlZOxpgWCAlI8owf30TnC8tK4Yiv3fbSQY2DrY5eC34wfCze/fWE8XWjgbs6HJs7KwMBibqGBbDwMFdZ95vW3d4MV4LNiw48ME3xP7+////NRgZGXEahg5+//7D8PLl+zsMDAx/8VrAwMDAwMnJvv3C6ZsahmYaRFtw7MBFBmYmhpXo4lgtYGbn6Nyx6ViOoZkGKzsHG8PL//sIWrB949EPe7efnkGUBcvnbHoZGOl8n4GBQY2w2yHgwZ2n9xgYGL4SZQEDAwMDI+P/vWWZE5Q5ONkIGv7tyw+Gnz9/bscmh9OCdcv2ZTEwMGQRNJ0AGHR1MskAALag6nmgSkffAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Floodlight - Tenon"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Floodlight - Yoke",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAtVJREFUSIljYaAxYBlxFvCpaso13r7+qJ6BgeETVS0wMFF1FZcUmV1cHy/fUjHb7e71xylPn746Tg0LGM1sdKbauxhHFdXG8TMxMTKs2NGp1Vo5e/3+nWfmXrt0t5psC2RkhKVllaS3VLam6Jnb6DDBxJmZmRjqutLFbZ2Mittr59ldPHPTn4GB4R1JFpjYaMdJSYl2dU8vFBcQ4sWqxtHDlF1LX8kmP6Hr/KsX79KvXrq7gxgLWM2tdVZ4B9l5pheGcP77959h+4YjOH3p4mXBsHRbu1xnzdwV7JysK86dvJHJwMDwH6sFusZKujw8POub+7OVdQ1VGRgYGBh+//rNkBBYh9OC66/XMwiJ8DNUtafyH9h1JrWrfr7Vq6evPR4/fvMMwwIBAYHFs1bUKguJ8GM1jIubg8HOxRhFjI2dFc52cDNh4uXj0p3QtnTm48dvfDEskFOUXH325HV9V28LrBaISQgxLNzQjNM3DAwMDGdPXGcQFOGdCeOjWMD08/eEfdtP17h6W3Bg0/zqxTuG+IBaOD8y0YPBw98aRc2Z49febVy1fwtWCxYv3vXVK9D23t+//7SYmZkY0MG3rz8Ydmw8Cueb2+iiyH94/5nh65dv15HFMFIRHz/XhhOHLmlZOxpgWCAlI8owf30TnC8tK4Yiv3fbSQY2DrY5eC34wfCze/fWE8XWjgbs6HJs7KwMBibqGBbDwMFdZ95vW3d4MV4LNiw48ME3xP7+////NRgZGXEahg5+//7D8PLl+zsMDAx/8VrAwMDAwMnJvv3C6ZsahmYaRFtw7MBFBmYmhpXo4lgtYGbn6Nyx6ViOoZkGKzsHG8PL//sIWrB949EPe7efnkGUBcvnbHoZGOl8n4GBQY2w2yHgwZ2n9xgYGL4SZQEDAwMDI+P/vWWZE5Q5ONkIGv7tyw+Gnz9/bscmh9OCdcv2ZTEwMGQRNJ0AGHR1MskAALag6nmgSkffAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Floodlight - Yoke"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "NEMA Head or Dusk to Dawn",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 19,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAA1NJREFUSInllV1IU2Ecxp/jOZa5zlrZdG3OdEpqSGGSmR+Im6FdFE0Tg0pKkj6IEPr2pgiqy+giBQnKqJtCpwgKbkqFEboSKqutjy2nbjPzax63Hedp3YRoO2eNii7quXz/z/v8/i/v++el8JdE/beglQC0MpEoN1okoiPCw5e6Z2c99unpyXGv9yGAFgDu3wGRyyjqVM7atcWX1er4TLk8fmHRTxD+Loslr8ZgOPDcbn/AATd/BSRW0PSt+2VlW7KVSgWfgfD7CU1CQmpPVVWqzmRSVrW2bh1zu48BYEMFUQkSyb3uykq1nKYjgzQzL21KSuq6qKgoTUMDMTIzUxkSaI1IdKmxvDxLTtOR+5qa4GQYAMChTZuwJy1t3ndGr0efwwEAOJmdje1JSdH1O3YU7G1sPMr4fHU/A8kKExOL02Wy1QDQbbNhYGoKAGC025ETFwelWAwA6HM40Gm1AsB8AzuTk+O3xMbu77RaG7DggQSA5GLx0SsazQa+k7pYFgebm6GvqADBZ/iuSwUFaU9sthIvx90VBCVKJDmxYjEpFNJpteJGby+OZ2YKgrYqlfQ6qVT70ukUBsloOjpIswCAswYDipOSBOsEADlNR790OufXAkARJCkSCtimUkFvscDt86FCp0MEJTwdkRS1KCfAyfn9c0Kba/LyMO7x4LnDgadDQyAJ4Zua+/p1UU4AiGHZGaHNVFgY7mi1yKivh3duDpzfLwhy/ZATAJpg2f5RtztdGsk/p+ulUlxWq3Gyo0MQ8mJkBDM+X2dwEMNcrTUaSy7k5wveVXVWFlrMZjweGOCt1xqNo8bh4RtBQf1jY28Vg4PdnyYni+IlEt6gMILA7V27sLGuDtOzs4tqz+x2fBgfbwEwERQEAEMu1+4T7e2me6Wlik/V1bywBIkErvPnF605GAY1XV1vuqzWIz/6eUGvR0eZ9FWrNBU63aNrRUUxQidbqFefP+OcwfCRYdk8AFxIIAC4azaby1Sq5NMGQ/vGmJjNhzMyKL4HMuhyodZo9L778kXf9v59CQDe8Qj68T2wWKYAZCuWL8890dZ2MSI8fD29ZMkKiiSX+jjO4/J6J1iO6xOR5Nkmk8kcLCukr/x6T083gMJQvL8F+hP690DfAJVMN2pbEV6tAAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "NEMA Head or Dusk to Dawn"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "New Light Request",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : true,
+                        "colorLocked" : true,
+                        "anchorPoint" : {
+                          "x" : -1,
+                          "y" : 1
+                        },
+                        "anchorPointUnits" : "Absolute",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 11,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 250,
+                        "fontFamilyName" : "ESRI US MUTCD 3",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
+                        "scaleX" : 1,
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      },
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : false,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 20,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 232,
+                        "fontFamilyName" : "ESRI Public1",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
+                        "scaleX" : 1,
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      },
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : false,
+                        "colorLocked" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 34,
+                        "fontFamilyName" : "ESRI Cartography",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
+                        "scaleX" : 1,
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      },
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 19,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 33,
+                        "fontFamilyName" : "ESRI Default Marker",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
+                        "scaleX" : 1,
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidStroke",
+                              "enable" : true,
+                              "capStyle" : "Round",
+                              "joinStyle" : "Round",
+                              "lineStyle3D" : "Strip",
+                              "miterLimit" : 10,
+                              "width" : 0.29999999999999999,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            },
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  255,
+                                  255,
+                                  115,
+                                  100
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Map"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "New Light Request"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "No Light",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 18,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABDBJREFUSInN1ktIHHccwPHvzOzq7qpbxhhrrFt8rR5KEyxRofVdetFDkFK2CsWDFoQS1t2lBNKDRw/JPpJS6wNKb4lYkNpSaYMXlYjYViseKlgV25WUUbSz6hp33enBrmj2EZuUkt9lBv6//+8zj/9Lx/8cuhcdNAEW4GXgAHgE/AFE/ktQAj4A3gfqgZQn2v8ERoF+4KfnBd8GPgNKAXQ6XcBisaxfuHAhEg6HU7a2tkS/358TiUQ+BDqAr4CPAOVZQDvgBqTMzMxHLS0tmVeuXMkQRTHjdNLh4SEzMzPa8PDwwf7+/ntAJXANmP83YDvgA6ivr/+rtbU1RxCEuIkpKSlUV1cLFRUVxv7+/qOFhYVXgQf/wCvnAcuAzwFNr9czOzv7Uk1NDRaLJcGzHUdqairXr1+Xent7mZuby+L4v5YBoaeBbkB/9erVQF1dXcbdu3e5ffs2LpeLUChEUVHRmeRgMEg4HEYQBEwmEx0dHXR3d2ubm5uvAZ3Ap8nAN4F6SZLCNpstQ5Zl7HY7UVSWZVpaWggGg0iSBEBaWhqSJLG+vs79+/fp6emhublZGBwcBLjJ8aCLJALfBaitrY3IsgxAaWkpdrudO3fusLGxQSQSoaysLOaz5OfnU1VVhSiKlJeXc+/ePXZ3d3OAt4DJRGA9QGVl5Zm5VlJSQldXF7du3aKvrw+n00l+fn4MKoriyfXy5cs8fPgQjqdWQvAVgNzc3JhiVquV3NxcFEXB7XbjdDopKCiIyYtGdnb2mZqJQFkQBM1oNMadAwaDAafTidfrxePx4HA4KCwsjAumpaVFbzOTgZuapl3a39/HZDLFLVRUVITD4cDn8+H1eunq6ooZuQCBQCB6e2bVeRL8Hbjk9/uxWq1xwdOo1+vF6/XicDhi0OXl5dM1E4IPgIq5ubmkIEBhYSFOpxOPx3PypsXFxQDs7OywtLQUTf0+GTgMfDI5OUljYyPp6elJ0YKCAlwuF263+wS1Wq2MjY1xdHSEwWBQDg4OfkwG/gKMBIPB5qGhIdrb25OCcDz/XC4XHo8Hn89HW1sbExMT0eYbT+bHW9o+FgThnenp6fScnByamprOjbrdbgYGBgCQZfnX7e3tL88D/qZpmk0QhG9GRkZERVGw2WwYjcakqKIoJ8ud2WxWt7e3qwDtPCDAd5qmXdPpdMNTU1OG+fl5GhoaePz4MZqmEd2q9vb2WFhYYHx8nLW1NQCys7MVSZLKVVXdilc42Qb8bTgcft1sNn+hqmr16OgoAJ2dnZjNZkKhELu7uyfJBoNBKy4u/npxcdEGHCYq+rQjxrKqqjV6vf6NvLy8G3t7ew2BQEDe2dmRBEHAbDYfZWVlKRcvXvxBFMWb09PT/qfUO9+pLRQK/by6umo73U/TtCNVVTVVVVlZidnYnw+ME+Fn7PfiH4SfO/4G+9l74b5+8vsAAAAASUVORK5CYII="
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "No Light"
+                    ]
+                  }
+                ],
+                "visible" : true
+              },
+              {
+                "type" : "CIMUniqueValueClass",
+                "label" : "Offset Roadway",
+                "patch" : "Default",
+                "symbol" : {
+                  "type" : "CIMSymbolReference",
+                  "symbol" : {
+                    "type" : "CIMPointSymbol",
+                    "symbolLayers" : [
+                      {
+                        "type" : "CIMPictureMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Z",
+                        "size" : 19,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "invertBackfaceTexture" : true,
+                        "scaleX" : 1,
+                        "textureFilter" : "Picture",
+                        "tintColor" : {
+                          "type" : "CIMRGBColor",
+                          "values" : [
+                            255,
+                            255,
+                            255,
+                            100
+                          ]
+                        },
+                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAxRJREFUSInl1WtIU2EYwPH/cjpd6NLyOquVpVmpiJnlBTKzBCNQupl0IehiHyShKPxSRlkfopBSK6wolKLIELpZKAX6wcwitdLSykpNlk6nm1pb9uFAzu1sjYw+1AMH3uc9D8/vfXnfw5Hyl0L630LuQIrPJGK93HB1liHTDzHY0UtvTz8PgTJAPx7IwcWJPTFBJB1JQ7VwFirTlyMjjFQ2Epd9hS1177huNFL0O5Cb0oOL17KIig5CKVYgkSBJCCG4JoTgm7VM3XaGxd397AKG7YWkMzwpqTrMUj935DYW8zNSIgkO9GVyQg6Srj622gX5Kjh0Yy+L/NyRb86H9h6znQByGUz3hPRYiJotzM/zx+vcDuLTT5MxoKfwV5DPsjCSwlVMAahugtYu6zspKIe72ZAYKuSrFqCKCmBjRQOXMLkgFpCfBxm5GwgVa7oyAhLmg0YHhfdBrQXjdzh5exQCOLSO+dXNpA59pdgqFOBNjL8HDmJQTBDsThbGfXrIuyOMv2jH1i2ejWugLyn1bTYgHwVeYghAbSsUVQhndvmRyQLmjK2TSMDPHa/6ttE5C8jZiYnWoNIa4TGN+HmQs9ayVm7WxwIyfsdgDQqbDrphaPks5BEzoTgT3Fwsaw1mfSyggSF01qD1MZCxHOZmQYcG6t7CymNQkwuOZqeqHRzbxwLS6GhUawn3dBPHFHI4uBa2nxXyZ+/gfCXsTByted4Guq9U2IZ6OVpQTuqBNdbPams8nLgFTe1CfvgGbFkCzo5CXnAfde0b8m1CjZ28Ur6m6r2aFSpPcchhAuSmQepxIW/vEb6rrGR40gotnZQBGpsQwKcOVmdeoKkkE2XLKXEsZSGMXBs716mB7Ku8rGxkp3m9KPRCzUB4IAmb8nl0cjPe1nZmGg0fYH8JrQMG4gCjXRBAcTXNayII2lvM3bBpRO5IRCp2QT52Q8E9hl538uDOM1JB/POw+eO7XkcfEK1UEJt5gYPOTsx1dUEhdUD2zcCgVo9m2MDTiTL2lT6m2VYvu37lefeoApbZUzsu6E/Evwf9AFG77+MxVXB6AAAAAElFTkSuQmCC"
+                      }
+                    ],
+                    "haloSize" : 1,
+                    "scaleX" : 1,
+                    "angleAlignment" : "Display"
+                  }
+                },
+                "values" : [
+                  {
+                    "type" : "CIMUniqueValue",
+                    "fieldValues" : [
+                      "Offset Roadway"
+                    ]
+                  }
+                ],
+                "visible" : true
+              }
+            ],
+            "heading" : "FixtureType"
+          }
+        ],
+        "polygonSymbolColorTarget" : "Fill"
+      },
+      "scaleSymbols" : true,
+      "snappable" : true,
+      "symbolLayerDrawing" : {
+        "type" : "CIMSymbolLayerDrawing"
+      }
+    }
+  ]
+}
