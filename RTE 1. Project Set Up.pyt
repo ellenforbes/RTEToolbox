@@ -242,7 +242,6 @@ class fClassSetUp(object):
             ["Surveyor7", "Surveyor7"],
             ["Surveyor8", "Surveyor8"],
             ["Surveyor9", "Surveyor9"],
-            ["Surveyor10", "Surveyor10"],
         ]
         for Surveyor in SurveyorCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "Surveyor", Surveyor[0], Surveyor[1])
@@ -254,8 +253,8 @@ class fClassSetUp(object):
         arcpy.AddField_management(input_fc, "LampWatt", "SHORT", "4", "", "", "Lamp Wattage", "NON_NULLABLE", "NON_REQUIRED","HIDWatt")
         arcpy.AddField_management(input_fc, "LampHeight", "SHORT", "4", "", "", "Lamp Height (ft)", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "ArmLength", "SHORT", "4", "", "", "Arm Length (ft)", "NULLABLE", "NON_REQUIRED","ArmLength")
-        arcpy.AddField_management(input_fc, "Setback", "SHORT", "4", "", "", "Setback", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "RoadWidth", "SHORT", "4", "", "", "Road Width", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "Setback", "SHORT", "4", "", "", "Setback (ft)", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "RoadWidth", "SHORT", "4", "", "", "Road Width (ft)", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "RoadClass", "TEXT", "", "", "20", "Road Class", "NULLABLE", "NON_REQUIRED","RoadClass")
         arcpy.AddField_management(input_fc, "PedActive", "TEXT", "", "", "10", "Pedestrian Activity", "NULLABLE", "NON_REQUIRED","PedActive")
         arcpy.AddField_management(input_fc, "StreetName", "TEXT", "", "", "100", "Street Name", "NULLABLE", "NON_REQUIRED","")
@@ -264,7 +263,7 @@ class fClassSetUp(object):
         arcpy.AddField_management(input_fc, "WireLoc", "TEXT", "", "", "20", "WireLocation", "NULLABLE", "NON_REQUIRED","WireLoc")
         arcpy.AddField_management(input_fc, "HVoltage", "TEXT", "", "", "10", "High Voltage", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "PoleMat", "TEXT", "", "", "20", "Pole Material", "NULLABLE", "NON_REQUIRED","PoleMat")
-        arcpy.AddField_management(input_fc, "PoleUse", "TEXT", "", "", "20", "Pole Useage", "NULLABLE", "NON_REQUIRED","PoleUse")
+        arcpy.AddField_management(input_fc, "PoleUse", "TEXT", "", "", "20", "Pole Usage", "NULLABLE", "NON_REQUIRED","PoleUse")
         arcpy.AddField_management(input_fc, "UtlPoleID", "TEXT", "", "", "20", "Utility Pole ID", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "Problems", "TEXT", "", "", "50", "Problems", "NULLABLE", "NON_REQUIRED","Problems")
         arcpy.AddField_management(input_fc, "SurvComs", "TEXT", "", "", "", "Survey Comments", "NULLABLE", "NON_REQUIRED","")
