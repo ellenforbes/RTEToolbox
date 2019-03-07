@@ -55,6 +55,7 @@ class fClassSetUp(object):
 
         arcpy.CreateDomain_management(input_fgdb, "LumType", "Survey, Lists luminaire type found by surveyor", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "DecoSubT", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
+        arcpy.CreateDomain_management(input_fgdb, "DecoCol", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "Technology", "Survey, Technology used in luminaire", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "HIDWatt", "Survey, Used by lamp wattage field", "SHORT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "ArmLength", "Survey, measured in feet by surveyor", "SHORT", "CODED", "DEFAULT", "DEFAULT")
@@ -96,7 +97,7 @@ class fClassSetUp(object):
         ]
         for LumType in LumTypeCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "LumType", LumType[0], LumType[1])
-
+        
         #DecoSubT
         DecoSubTCVs = [
             ["Type 1", "Type 1"],
@@ -107,6 +108,20 @@ class fClassSetUp(object):
         ]
         for DecoSubT in DecoSubTCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "DecoSubT", DecoSubT[0], DecoSubT[1])
+        
+        #DecoCol
+        DecoColCVs = [
+            ["Black", "Black"],
+            ["Blue", "Blue"],
+            ["Bronze", "Bronze"],
+            ["Dark Green", "Dark Green"],
+            ["Light Green", "Light Green"],
+            ["Gray", "Gray"],
+            ["White", "White"],
+            ["Other", "Other"],
+        ]
+        for DecoCol in DecoColCVs:
+            arcpy.AddCodedValueToDomain_management(input_fgdb, "DecoCol", DecoCol[0], DecoCol[1])
 
         #Tehcnology
         TechnologyCVs = [
@@ -248,7 +263,8 @@ class fClassSetUp(object):
 
         # Process: Add Field AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
         arcpy.AddField_management(input_fc, "FixType", "TEXT", "", "", "50", "FixtureType", "NON_NULLABLE", "NON_REQUIRED","LumType")
-        arcpy.AddField_management(input_fc, "DecoSubT", "TEXT", "", "", "6", "Deco Subtype", "NULLABLE", "NON_REQUIRED","DecoSubT")
+        arcpy.AddField_management(input_fc, "DecoSubT", "TEXT", "", "", "10", "Deco Subtype", "NULLABLE", "NON_REQUIRED","DecoSubT")
+        arcpy.AddField_management(input_fc, "DecoCol", "TEXT", "", "", "15", "Deco Color", "NULLABLE", "NON_REQUIRED","DecoCol")
         arcpy.AddField_management(input_fc, "Technology", "TEXT", "", "", "40", "Technology", "NON_NULLABLE", "NON_REQUIRED","Technology")
         arcpy.AddField_management(input_fc, "LampWatt", "SHORT", "4", "", "", "Lamp Wattage", "NON_NULLABLE", "NON_REQUIRED","HIDWatt")
         arcpy.AddField_management(input_fc, "LampHeight", "SHORT", "4", "", "", "Lamp Height (ft)", "NULLABLE", "NON_REQUIRED","")
