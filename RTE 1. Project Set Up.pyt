@@ -125,7 +125,11 @@ class fClassSetUp(object):
 
         #Tehcnology
         TechnologyCVs = [
-            ["HID (HPS, LPS, MV, MH), Incandescent", "HID (HPS, LPS, MV, MH), Incandescent"],
+            ["HPS", "HPS"],
+            ["LPS", "LPS"],
+            ["Mercury Vapour", "Mercury Vapour"],
+            ["Metal Halide", "Metal Halide"],
+            ["Incandescent", "Incandescent"],
             ["Induction", "Induction"],
             ["LED", "LED"],
         ]
