@@ -70,6 +70,8 @@ class CreateInstallLayer(object):
         WireRepdCVs = [
             ["1-15 ft", "1-15 ft"],
             ["16-30 ft", "16-30 ft"],
+            ["31-45 ft", "31-45 ft"],
+            ["46 ft +", "46 ft +"],
             ["No", "No"],
         ]
         for WireRepd in WireRepdCVs:
@@ -161,7 +163,7 @@ class CreateServiceLayer(object):
         sp = parameters[3].valueAsText
         today = str(date.today().strftime("%Y%m%d"))
         input_fc_name = cityname + "_" + sp + "_" + today + "_" + "Service"
-        input_fgdb_name = "ServiceLayerCreation"
+        input_fgdb_name = "LayerCreationService"
         input_fgdb =  folder_location + "\\" + input_fgdb_name + ".gdb"
         input_fc =  folder_location + "\\" + input_fgdb_name +".gdb\\" + input_fc_name
 
@@ -169,7 +171,7 @@ class CreateServiceLayer(object):
         arcpy.AddMessage(input_fc)
 
         arcpy.CreateFileGDB_management (folder_location, input_fgdb_name)
-        arcpy.FeatureClassToFeatureClass_conversion (iga_fc, folder_location +"\\ServiceLayerCreation.gdb", input_fc_name)
+        arcpy.FeatureClassToFeatureClass_conversion (iga_fc, input_fgdb, input_fc_name)
 
     
         arcpy.AddMessage("Data Copied To Local")

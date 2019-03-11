@@ -3,18 +3,18 @@
   "version" : "2.3.0",
   "build" : 15769,
   "layers" : [
-    "CIMPATH=map/airmont_ny_20190306_survey.xml"
+    "CIMPATH=map/airmont_ny_20190309_survey.xml"
   ],
   "layerDefinitions" : [
     {
       "type" : "CIMFeatureLayer",
-      "name" : "Airmont_NY_20190306_Survey",
-      "uRI" : "CIMPATH=map/airmont_ny_20190306_survey.xml",
+      "name" : "Airmont_NY_20190309_Survey",
+      "uRI" : "CIMPATH=map/airmont_ny_20190309_survey.xml",
       "sourceModifiedTime" : {
         "type" : "TimeInstant"
       },
       "useSourceMetadata" : true,
-      "description" : "Airmont_NY_20190306_Survey",
+      "description" : "Airmont_NY_20190309_Survey",
       "expanded" : true,
       "layer3DProperties" : {
         "type" : "CIM3DLayerProperties",
@@ -39,85 +39,21 @@
       "visibility" : true,
       "displayCacheType" : "Permanent",
       "maxDisplayCacheAge" : 5,
-      "popupInfo" : {
-        "type" : "CIMPopupInfo",
-        "title" : "{StreetName}",
-        "mediaInfos" : [
-          {
-            "type" : "CIMTableMediaInfo",
-            "row" : 1,
-            "refreshRateUnit" : "esriTimeUnitsSeconds",
-            "fields" : [
-              "OBJECTID",
-              "RTE_ID",
-              "LuminaireType",
-              "DecoSubtype",
-              "Technology",
-              "LampWattage",
-              "LampHeight",
-              "ArmLength",
-              "Setback",
-              "RdWidth",
-              "RdClass",
-              "PedestrianActivity",
-              "StreetName",
-              "Intersection",
-              "ArmOrientation",
-              "WireLocation",
-              "HighVoltage",
-              "PoleMaterial",
-              "PoleUsage",
-              "UtlPoleID",
-              "Problems",
-              "SurvComments",
-              "SurvDate",
-              "Surveyor",
-              "Ownership",
-              "LDC",
-              "ProjectNo",
-              "POINT_X",
-              "POINT_Y",
-              "Name",
-              "FolderPath",
-              "MountRatio",
-              "DesignModel",
-              "LEDDesigned",
-              "Supplier",
-              "MiscParts",
-              "Status",
-              "WireReplaced",
-              "FuseReplaced",
-              "FuseHolderReplaced",
-              "ArmMods",
-              "SecondaryConnectionRefresh",
-              "PowerAvailable",
-              "MiscMods",
-              "Operator",
-              "InstlComments",
-              "InstlDate",
-              "ReportedIssue",
-              "ServiceType",
-              "SvcComments",
-              "SvcDate",
-              "GlobalID"
-            ]
-          }
-        ]
-      },
       "showPopups" : true,
       "serviceLayerID" : -1,
       "refreshRate" : -1,
       "refreshRateUnit" : "esriTimeUnitsSeconds",
       "autoGenerateFeatureTemplates" : true,
+      "featureElevationExpression" : "Shape.Z",
       "featureTable" : {
         "type" : "CIMFeatureTable",
         "displayField" : "StreetName",
         "editable" : true,
         "dataConnection" : {
           "type" : "CIMStandardDataConnection",
-          "workspaceConnectionString" : "DATABASE=..\\..\\Municipality\\Airmont_NY\\Airmont_NY.gdb",
+          "workspaceConnectionString" : "DATABASE=..\\..\\..\\RTE\\Municipality\\Airmont_NY\\SurveyLayerCreation.gdb",
           "workspaceFactory" : "FileGDB",
-          "dataset" : "Airmont_NY_20190306_Survey",
+          "dataset" : "Airmont_NY_20190309_Survey",
           "datasetType" : "esriDTFeatureClass"
         },
         "studyAreaSpatialRel" : "esriSpatialRelUndefined",
@@ -627,18 +563,143 @@
       "renderer" : {
         "type" : "CIMUniqueValueRenderer",
         "colorRamp" : {
-          "type" : "CIMRandomHSVColorRamp",
+          "type" : "CIMFixedColorRamp",
           "colorSpace" : {
             "type" : "CIMICCColorSpace",
             "url" : "Default RGB"
           },
-          "maxH" : 360,
-          "minS" : 15,
-          "maxS" : 30,
-          "minV" : 99,
-          "maxV" : 100,
-          "minAlpha" : 100,
-          "maxAlpha" : 100
+          "colors" : [
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                237,
+                81,
+                81,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                20,
+                158,
+                206,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                167,
+                198,
+                54,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                158,
+                85,
+                156,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                252,
+                146,
+                31,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                255,
+                222,
+                62,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                247,
+                137,
+                216,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                183,
+                129,
+                74,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                60,
+                175,
+                153,
+                100
+              ]
+            },
+            {
+              "type" : "CIMRGBColor",
+              "colorSpace" : {
+                "type" : "CIMICCColorSpace",
+                "url" : "Default RGB"
+              },
+              "values" : [
+                107,
+                107,
+                214,
+                100
+              ]
+            }
+          ]
         },
         "defaultLabel" : "<all other values>",
         "defaultSymbol" : {
@@ -647,16 +708,84 @@
             "type" : "CIMPointSymbol",
             "symbolLayers" : [
               {
-                "type" : "CIMPictureMarker",
+                "type" : "CIMVectorMarker",
                 "enable" : true,
                 "anchorPointUnits" : "Relative",
                 "dominantSizeAxis3D" : "Z",
-                "size" : 12,
+                "size" : 4,
                 "billboardMode3D" : "FaceNearPlane",
-                "invertBackfaceTexture" : true,
-                "scaleX" : 1,
-                "textureFilter" : "Picture",
-                "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAWVJREFUOI2tk88rw3EYx19fZr/aD6wmZlsrKWkunOTioDgg2g4Orv4AueDif5Cm3KQcpnEQmsMkJpYkXBQ1fDdia9th+5YfXwdks69RvOtzefq8XvU8PY+KP0b17wLZiw4YuZXwiFns1RruXXpWEZgW/CRLCmQvrp0HQtdZnFYt2HUQl3DuJ2kzljMqe+kW/OwpCuQeNAGRrQYDjiHH54dGoN0CcQnTfJSgPEiTEOCmSLCUYtKux9FiVu61VgtdNRjmoviA3iLBnUSfp14ZzpdoyuhQbMGsprI0/pYGI2aLDlsih1ggeHwm8xtBVQXpRI5q+CKIZjkG3D8JjtIcfsAFgtlLQlPNdAK2Erw0c846fO5D/hA3BsKYltsZB6wKcM53wUQ4yW5+MX+RYisiu+5Nxk66aAX6gToggUxw+IC1hSsyQOQ7AUDkNIUo+HkCtoEXQADUwNn7K4jSMcWARYW6Yv58ja/NJGb3V8V6eQAAAABJRU5ErkJggg=="
+                "frame" : {
+                  "xmin" : -2,
+                  "ymin" : -2,
+                  "xmax" : 2,
+                  "ymax" : 2
+                },
+                "markerGraphics" : [
+                  {
+                    "type" : "CIMMarkerGraphic",
+                    "geometry" : {
+                      "curveRings" : [
+                        [
+                          [
+                            1.2246467991473532e-16,
+                            2
+                          ],
+                          {
+                            "a" : [
+                              [
+                                1.2246467991473532e-16,
+                                2
+                              ],
+                              [
+                                2.3507717417874261e-15,
+                                0
+                              ],
+                              0,
+                              1
+                            ]
+                          }
+                        ]
+                      ]
+                    },
+                    "symbol" : {
+                      "type" : "CIMPolygonSymbol",
+                      "symbolLayers" : [
+                        {
+                          "type" : "CIMSolidStroke",
+                          "enable" : true,
+                          "capStyle" : "Round",
+                          "joinStyle" : "Round",
+                          "lineStyle3D" : "Strip",
+                          "miterLimit" : 10,
+                          "width" : 0.69999999999999996,
+                          "color" : {
+                            "type" : "CIMRGBColor",
+                            "values" : [
+                              0,
+                              0,
+                              0,
+                              100
+                            ]
+                          }
+                        },
+                        {
+                          "type" : "CIMSolidFill",
+                          "enable" : true,
+                          "color" : {
+                            "type" : "CIMRGBColor",
+                            "values" : [
+                              130,
+                              130,
+                              130,
+                              100
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "respectFrame" : true
               }
             ],
             "haloSize" : 1,
@@ -1820,9 +1949,10 @@
                 "visible" : true
               }
             ],
-            "heading" : "FixtureType"
+            "heading" : "Fixture Type"
           }
         ],
+        "useDefaultSymbol" : true,
         "polygonSymbolColorTarget" : "Fill"
       },
       "scaleSymbols" : true,

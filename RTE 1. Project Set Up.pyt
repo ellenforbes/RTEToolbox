@@ -10,19 +10,19 @@ class Toolbox(object):
         self.alias = ""
 
         # List of tool classes associated with this toolbox
-        self.tools = [fClassSetUp, addReviewFields, addEMatchDomain]
+        self.tools = [surveyFCSetUp, addReviewFields, addEMatchDomain]
 
 
-class fClassSetUp(object):
+class surveyFCSetUp(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "1. Create Feature Class, RTE ID and Survey Fields"
+        self.label = "1. Create Feature Class for Survey or Missed Lights"
         self.description = ""
         self.canRunInBackground = False
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("input_fgdb","File Geodatabase","Input","DEWorkspace","Required")
+        param0 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
         param1 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
         param2 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
         param3 = arcpy.Parameter("missed_light","Tick if Layer is for Missed Lights","Input","GPBoolean","Optional")
@@ -32,26 +32,34 @@ class fClassSetUp(object):
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
-        input_fgdb = parameters[0].valueAsText
+
+        folder_location = parameters[0].valueAsText
         cityname = parameters[1].valueAsText
         sp = parameters[2].valueAsText
         missed_light = parameters[3].valueAsText
+        today = str(date.today().strftime("%Y%m%d"))
 
         if missed_light == 'true':
-            arcpy.AddMessage("The check box was checked")
-            input_fc_name = cityname + "_" + sp + "_" + str(date.today().strftime("%Y%m%d")) + "_MissedLights"
+            arcpy.AddMessage("Creating Missed Lights Layer...")
+            input_fc_name = cityname + "_" + sp + "_" + today + "_MissedLights"
+            input_fgdb_name = "LayerCreationMissedLights"
         else: #in this case, the check box value is 'false', user did not check the box
-            arcpy.AddMessage("The check box was not checked")
-            input_fc_name = cityname + "_" + sp + "_" + str(date.today().strftime("%Y%m%d")) + "_Survey"
+            arcpy.AddMessage("Creating Survey Layer...")
+            input_fc_name = cityname + "_" + sp + "_" + today + "_Survey"
+            input_fgdb_name = "LayerCreationSurvey"
+
+        input_fgdb =  folder_location + "\\" + input_fgdb_name + ".gdb"
+        input_fc =  folder_location + "\\" + input_fgdb_name +".gdb\\" + input_fc_name
 
         input_fc = input_fgdb + "\\" +input_fc_name
         latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
         
-
+        arcpy.CreateFileGDB_management (folder_location, input_fgdb_name)
         arcpy.CreateFeatureclass_management (input_fgdb, input_fc_name, "POINT", "", "DISABLED", "ENABLED", latLonRef)
         arcpy.AddMessage("Feature Class Created")
         arcpy.AddField_management(input_fc, "RTEID", "SHORT", "", "", "5", "RTE ID", "NULLABLE", "REQUIRED","")
         arcpy.AddMessage("RTE ID Field Added, Cannot Be Deleted")
+        arcpy.AddMessage("Why didn't the map have any meridians?")
 
         arcpy.CreateDomain_management(input_fgdb, "LumType", "Survey, Lists luminaire type found by surveyor", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "DecoSubT", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
@@ -265,8 +273,10 @@ class fClassSetUp(object):
         for Surveyor in SurveyorCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "Surveyor", Surveyor[0], Surveyor[1])
 
+        arcpy.AddMessage("...it was a map of a parallel universe.")
+
         # Process: Add Field AddField_management (in_table, field_name, field_type, {field_precision}, {field_scale}, {field_length}, {field_alias}, {field_is_nullable}, {field_is_required}, {field_domain})
-        arcpy.AddField_management(input_fc, "FixType", "TEXT", "", "", "50", "FixtureType", "NON_NULLABLE", "NON_REQUIRED","LumType")
+        arcpy.AddField_management(input_fc, "FixType", "TEXT", "", "", "50", "Fixture Type", "NON_NULLABLE", "NON_REQUIRED","LumType")
         arcpy.AddField_management(input_fc, "DecoSubT", "TEXT", "", "", "10", "Deco Subtype", "NULLABLE", "NON_REQUIRED","DecoSubT")
         arcpy.AddField_management(input_fc, "DecoCol", "TEXT", "", "", "15", "Deco Color", "NULLABLE", "NON_REQUIRED","DecoCol")
         arcpy.AddField_management(input_fc, "Technology", "TEXT", "", "", "40", "Technology", "NON_NULLABLE", "NON_REQUIRED","Technology")
@@ -289,7 +299,19 @@ class fClassSetUp(object):
         arcpy.AddField_management(input_fc, "SurvComs", "TEXT", "", "", "", "Survey Comments", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "SurvDate", "DATE", "", "", "", "Survey Date", "NON_NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "Surveyor", "TEXT", "", "", "30", "Surveyor", "NULLABLE", "NON_REQUIRED","Surveyor")
-
+        arcpy.AddMessage("Survey Fields Added")
+        arcpy.AddField_management(input_fc, "Ownership", "TEXT", "", "", "60", "Ownership", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "UtlCompany", "TEXT", "", "", "60", "Utility Company", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "MountRatio", "DOUBLE", "", "", "", "Mount Ratio", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "LumType", "TEXT", "", "", "50", "Luminaire Type", "NULLABLE", "NON_REQUIRED","LumType")
+        arcpy.AddField_management(input_fc, "DesignMod", "TEXT", "", "", "50", "Design Model", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "LEDDesign", "TEXT", "", "", "", "LED Designed", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "MiscParts", "TEXT", "", "", "", "Misc Parts", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddField_management(input_fc, "InstlCode", "TEXT", "", "", "10", "Install Code", "NULLABLE", "NON_REQUIRED","")
+        arcpy.AddMessage("Design Fields Added")
         return
 
 class addReviewFields(object):

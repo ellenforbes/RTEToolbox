@@ -13,7 +13,7 @@ class Toolbox(object):
         self.alias = ""
 
         # List of tool classes associated with this toolbox
-        self.tools = [CalcSeqNumbers, ExportCopyToLocal, CleanStreetNames, SearchForNulls, SearchOutsideBoundary, AddDesignFields, CalcMountRatio, CalcXY, CalcSeqNumbersAlt]
+        self.tools = [CalcSeqNumbers, ExportCopyToLocal, CleanStreetNames, SearchForNulls, CalcProjNoXYMountR, SearchOutsideBoundary, CalcMountRatio, CalcXY, CalcSeqNumbersAlt]
 
 class CalcSeqNumbers(object):
     def __init__(self):
@@ -186,10 +186,10 @@ class SearchForNulls(object):
 
         arcpy.AddMessage("Nulls Searched")
 
-class AddDesignFields(object):
+class CalcProjNoXYMountR(object):
     def __init__(self):
         """Define the tool (tool name is the name of the class)."""
-        self.label = "6. Add Design Fields, Calc X and Y, Calc Mount Ratio"
+        self.label = "6. Calculate Project Number, Calc X and Y, Calc Mount Ratio"
         self.description = ""
         self.canRunInBackground = False
 
@@ -207,20 +207,6 @@ class AddDesignFields(object):
         projectno_field = str(parameters[1].valueAsText)
         latLonRef = "Coordinate Systems\Geographic Coordinate Systems\World\WGS 1984.prj"  
         arcpy.AddMessage(projectno_field)
-
-        #Add Fields
-        arcpy.AddField_management(input_fc, "Ownership", "TEXT", "", "", "60", "Ownership", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "UtlCompany", "TEXT", "", "", "60", "Utility Company", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "ProjectNo", "TEXT", "", "", "30", "Project No", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "PointX", "DOUBLE", "", "", "", "Point X", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "PointY", "DOUBLE", "", "", "", "Point Y", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "MountRatio", "DOUBLE", "", "", "", "Mount Ratio", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "LumType", "TEXT", "", "", "50", "Luminaire Type", "NULLABLE", "NON_REQUIRED","LumType")
-        arcpy.AddField_management(input_fc, "DesignMod", "TEXT", "", "", "50", "Design Model", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "LEDDesign", "TEXT", "", "", "", "LED Designed", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "MiscParts", "TEXT", "", "", "", "Misc Parts", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "InstlCode", "TEXT", "", "", "10", "Install Code", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddMessage("Design Fields Added")
 
         #Calculate Mount Ratio
         calcMR = "(!RoadWidth!+!Setback!-!ArmLength!)/float(!LampHeight!)"
