@@ -21,37 +21,52 @@ class CreateInstallLayer(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("input_fgdb","File Geodatabase","Input","DEWorkspace","Required")
-        param1 = arcpy.Parameter("input_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        params = [param0, param1]
+        param0 = arcpy.Parameter("iga_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
+        param1 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
+        param2 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
+        param3 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
+        params = [param0, param1, param2, param3]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
-        input_fgdb = parameters[0].valueAsText
-        input_fc = parameters[1].valueAsText
+
+        iga_fc = parameters[0].valueAsText
+        folder_location = parameters[1].valueAsText
+        cityname = parameters[2].valueAsText
+        sp = parameters[3].valueAsText
+        today = str(date.today().strftime("%Y%m%d"))
+        input_fc_name = cityname + "_" + sp + "_" + today + "_" + "Installations"
+        input_fgdb_name = "LayerCreationInstallations"
+        input_fgdb =  folder_location + "\\" + input_fgdb_name + ".gdb"
+        input_fc =  folder_location + "\\" + input_fgdb_name +".gdb\\" + input_fc_name
+
         arcpy.AddMessage(input_fgdb)
         arcpy.AddMessage(input_fc)
+
+        arcpy.CreateFileGDB_management (folder_location, input_fgdb_name)
+        arcpy.FeatureClassToFeatureClass_conversion (iga_fc, input_fgdb, input_fc_name)
+    
+        arcpy.AddMessage("Data Copied To Local")
+
+ 
         #Add Domains and Coded Values
         arcpy.CreateDomain_management(input_fgdb, "Status", "Installations, shows status of the installation", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "VPoleID", "Installations, checks surveyor entered utility pole ID", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "WireRepd", "Installations", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "ArmMods", "Installations", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "MiscMods", "Installations, ", "TEXT", "CODED", "DEFAULT", "DEFAULT")
+        arcpy.CreateDomain_management(input_fgdb, "TraffCon", "Installations, ", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "RepIssue", "Maintenance, this is the issue reported for maintenace", "TEXT", "CODED", "DEFAULT", "DEFAULT")
 
         StatusCVs = [
             ["Installed", "Installed"],
             ["Installed - With Issue", "Installed - With Issue"],
-            ["Missed Light", "Missed Light"],
             ["Not Installed - No Pole Or Light", "Not Installed - No Pole Or Light"],
             ["Not Installed - High Voltage", "Not Installed - High Voltage"],
             ["Not Installed - No Access", "Not Installed - No Access"],
             ["Not Installed - Not Owned By Client", "Not Installed - Not Owned By Client"],
-            ["Service Pending", "Service Pending"],
-            ["Service Required", "Service Required"],
-            ["Serviced", "Serviced"],
             ["No Replacement", "No Replacement"],
             ["No Replacement - Client Request", "No Replacement - Client Request"],
             ["Pending", "Pending"],
@@ -63,6 +78,7 @@ class CreateInstallLayer(object):
             ["Correct", "Correct"],
             ["Incorrect - Write ID In Comments", "Incorrect - Write ID In Comments"],
             ["No Clear Label", "No Clear Label"],
+            ["No Label", "No Label"],
         ]
         for VPoleID in VPoleIDCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "VPoleID", VPoleID[0], VPoleID[1])
@@ -97,6 +113,15 @@ class CreateInstallLayer(object):
         for MiscMods in MiscModsCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "MiscMods", MiscMods[0], MiscMods[1])
 
+        TraffConCVs = [
+            ["Flaggers", "Flaggers"],
+            ["Flaggers and Police", "Flaggers and Police"],
+            ["Police", "Police"],
+            ["No", "No"], 
+        ]
+        for TraffCon in TraffConCVs:
+            arcpy.AddCodedValueToDomain_management(input_fgdb, "TraffCon", TraffCon[0], TraffCon[1])
+
         RepIssueCVs = [
             ["Overlit", "Overlit"],
             ["Underlit", "Underlit"],
@@ -122,15 +147,14 @@ class CreateInstallLayer(object):
         arcpy.AddField_management(input_fc, "FuseRepd", "TEXT", "", "", "10", "Fuse Replaced", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "FuseHdRepd", "TEXT", "", "", "10", "Fuse Holder Replaced", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "ArmMods", "TEXT", "", "", "20", "Arm Modifications", "NULLABLE", "NON_REQUIRED","ArmMods")
+        arcpy.AddField_management(input_fc, "MiscMods", "TEXT", "", "", "20", "Misc Modifications", "NULLABLE", "NON_REQUIRED","MiscMods")
         arcpy.AddField_management(input_fc, "SndConnctR", "TEXT", "", "", "10", "Secondary Connection Refresh", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "PowerAvail", "TEXT", "", "", "10", "Power Available", "NULLABLE", "NON_REQUIRED","YesNo")
-        arcpy.AddField_management(input_fc, "MiscMods", "TEXT", "", "", "20", "Misc Modifications", "NULLABLE", "NON_REQUIRED","MiscMods")
+        arcpy.AddField_management(input_fc, "TraffCon", "TEXT", "", "", "10", "Traffic Control", "NULLABLE", "NON_REQUIRED","TraffCon")
         arcpy.AddField_management(input_fc, "Operator", "TEXT", "", "", "50", "Operator", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "InstlComs", "TEXT", "", "", "", "Install Comments", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "InstlDate", "DATE", "", "", "", "Install Date", "NULLABLE", "NON_REQUIRED","")
-        arcpy.AddField_management(input_fc, "CorPoleID", "TEXT", "", "", "10", "Correct Utlity Pole ID", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "IRepIssue", "TEXT", "", "", "30", "Reported Issue at Installation", "NULLABLE", "NON_REQUIRED","RepIssue")
-        arcpy.AddField_management(input_fc, "ISvcComs", "TEXT", "", "", "", "Service Comments at Installation", "NULLABLE", "NON_REQUIRED","")
 
         return
 
@@ -144,7 +168,7 @@ class CreateServiceLayer(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("iga_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("folder_location","Location","Input", "DEFolder","Required")
+        param1 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
         param2 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
         param3 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
         params = [param0, param1, param2, param3]
