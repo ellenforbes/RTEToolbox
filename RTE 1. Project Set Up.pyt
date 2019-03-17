@@ -135,7 +135,7 @@ class surveyFCSetUp(object):
         TechnologyCVs = [
             ["HPS", "HPS"],
             ["LPS", "LPS"],
-            ["Mercury Vapour", "Mercury Vapour"],
+            ["Mercury Vapor", "Mercury Vapor"],
             ["Metal Halide", "Metal Halide"],
             ["Incandescent", "Incandescent"],
             ["Induction", "Induction"],
@@ -155,7 +155,7 @@ class surveyFCSetUp(object):
             ["200", "200 W"],
             ["250", "250 W"],
             ["400", "400 W"],
-            ["999", "No Clear Label"],
+            ["998", "No Label"],
             ["999", "Other"],
         ]
         for HIDWatt in HIDWattCVs:
@@ -179,8 +179,8 @@ class surveyFCSetUp(object):
         #RoadClass
         RoadClassCVs = [
             ["Local", "Local"],
-            ["Arterial", "Arterial"],
             ["Collector", "Collector"],
+            ["Arterial", "Arterial"],
             ["Expressway", "Expressway"],
             ["Park", "Park"],
             ["Parking Lot", "Parking Lot"],
@@ -213,6 +213,7 @@ class surveyFCSetUp(object):
             ["45", "At Angle With Road"],
             ["90", "Parallel To Road"],
             ["180", "Away From Road"],
+            ["360", "On Island"],
         ]
         for ArmOrient in ArmOrientCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "ArmOrient", ArmOrient[0], ArmOrient[1])
@@ -254,6 +255,7 @@ class surveyFCSetUp(object):
             ["Pole Condition", "Pole Condition"],
             ["Restricted Area", "Restricted Area"],
             ["Tree Trimming Required", "Tree Trimming Required"],
+            ["Other - Write In Comments", "Other - Write In Comments"],
         ]
         for Problems in ProblemsCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "Problems", Problems[0], Problems[1])
@@ -289,8 +291,8 @@ class surveyFCSetUp(object):
         arcpy.AddField_management(input_fc, "PedActive", "TEXT", "", "", "10", "Pedestrian Activity", "NULLABLE", "NON_REQUIRED","PedActive")
         arcpy.AddField_management(input_fc, "StreetName", "TEXT", "", "", "100", "Street Name", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "Intersect", "TEXT", "", "", "10", "Intersection", "NULLABLE", "NON_REQUIRED","YesNo")
-        arcpy.AddField_management(input_fc, "ArmOrient", "SHORT", "4", "", "", "ArmOrientation", "NULLABLE", "NON_REQUIRED","ArmOrient")
-        arcpy.AddField_management(input_fc, "WireLoc", "TEXT", "", "", "20", "WireLocation", "NULLABLE", "NON_REQUIRED","WireLoc")
+        arcpy.AddField_management(input_fc, "ArmOrient", "SHORT", "4", "", "", "Arm Orientation", "NULLABLE", "NON_REQUIRED","ArmOrient")
+        arcpy.AddField_management(input_fc, "WireLoc", "TEXT", "", "", "20", "Wire Location", "NULLABLE", "NON_REQUIRED","WireLoc")
         arcpy.AddField_management(input_fc, "HVoltage", "TEXT", "", "", "10", "High Voltage", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "PoleMat", "TEXT", "", "", "20", "Pole Material", "NULLABLE", "NON_REQUIRED","PoleMat")
         arcpy.AddField_management(input_fc, "PoleUse", "TEXT", "", "", "20", "Pole Usage", "NULLABLE", "NON_REQUIRED","PoleUse")
