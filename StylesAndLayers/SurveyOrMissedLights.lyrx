@@ -3,18 +3,21 @@
   "version" : "2.3.0",
   "build" : 15769,
   "layers" : [
-    "CIMPATH=map/airmont_ny_20190309_survey.xml"
+    "CIMPATH=map/biddeford_me_20190327_missedlights.xml"
   ],
   "layerDefinitions" : [
     {
       "type" : "CIMFeatureLayer",
-      "name" : "Airmont_NY_20190309_Survey",
-      "uRI" : "CIMPATH=map/airmont_ny_20190309_survey.xml",
+      "name" : "Biddeford_ME_20190327_MissedLights",
+      "uRI" : "CIMPATH=map/biddeford_me_20190327_missedlights.xml",
       "sourceModifiedTime" : {
         "type" : "TimeInstant"
       },
       "useSourceMetadata" : true,
-      "description" : "Airmont_NY_20190309_Survey",
+      "description" : "Biddeford_ME_20190327_MissedLights",
+      "layerElevation" : {
+        "type" : "CIMLayerElevationSurface"
+      },
       "expanded" : true,
       "layer3DProperties" : {
         "type" : "CIM3DLayerProperties",
@@ -51,9 +54,9 @@
         "editable" : true,
         "dataConnection" : {
           "type" : "CIMStandardDataConnection",
-          "workspaceConnectionString" : "DATABASE=..\\..\\..\\RTE\\Municipality\\Airmont_NY\\SurveyLayerCreation.gdb",
+          "workspaceConnectionString" : "DATABASE=..\\..\\..\\RTE\\Municipality\\Biddeford_ME\\LayerCreationMissedLights.gdb",
           "workspaceFactory" : "FileGDB",
-          "dataset" : "Airmont_NY_20190309_Survey",
+          "dataset" : "Biddeford_ME_20190327_MissedLights",
           "datasetType" : "esriDTFeatureClass"
         },
         "studyAreaSpatialRel" : "esriSpatialRelUndefined",
@@ -737,7 +740,7 @@
                                 2
                               ],
                               [
-                                2.3507717417874261e-15,
+                                2.8951391605466708e-15,
                                 0
                               ],
                               0,
@@ -1724,73 +1727,6 @@
                       },
                       {
                         "type" : "CIMCharacterMarker",
-                        "enable" : false,
-                        "anchorPointUnits" : "Relative",
-                        "dominantSizeAxis3D" : "Y",
-                        "size" : 20,
-                        "billboardMode3D" : "FaceNearPlane",
-                        "characterIndex" : 232,
-                        "fontFamilyName" : "ESRI Public1",
-                        "fontStyleName" : "Regular",
-                        "fontType" : "Unspecified",
-                        "scaleX" : 1,
-                        "symbol" : {
-                          "type" : "CIMPolygonSymbol",
-                          "symbolLayers" : [
-                            {
-                              "type" : "CIMSolidFill",
-                              "enable" : true,
-                              "color" : {
-                                "type" : "CIMRGBColor",
-                                "values" : [
-                                  0,
-                                  0,
-                                  0,
-                                  100
-                                ]
-                              }
-                            }
-                          ]
-                        },
-                        "scaleSymbolsProportionally" : true,
-                        "respectFrame" : true
-                      },
-                      {
-                        "type" : "CIMCharacterMarker",
-                        "enable" : false,
-                        "colorLocked" : true,
-                        "anchorPointUnits" : "Relative",
-                        "dominantSizeAxis3D" : "Y",
-                        "size" : 18,
-                        "billboardMode3D" : "FaceNearPlane",
-                        "characterIndex" : 34,
-                        "fontFamilyName" : "ESRI Cartography",
-                        "fontStyleName" : "Regular",
-                        "fontType" : "Unspecified",
-                        "scaleX" : 1,
-                        "symbol" : {
-                          "type" : "CIMPolygonSymbol",
-                          "symbolLayers" : [
-                            {
-                              "type" : "CIMSolidFill",
-                              "enable" : true,
-                              "color" : {
-                                "type" : "CIMRGBColor",
-                                "values" : [
-                                  0,
-                                  0,
-                                  0,
-                                  100
-                                ]
-                              }
-                            }
-                          ]
-                        },
-                        "scaleSymbolsProportionally" : true,
-                        "respectFrame" : true
-                      },
-                      {
-                        "type" : "CIMCharacterMarker",
                         "enable" : true,
                         "anchorPointUnits" : "Relative",
                         "dominantSizeAxis3D" : "Y",
@@ -1866,30 +1802,157 @@
                     "type" : "CIMPointSymbol",
                     "symbolLayers" : [
                       {
-                        "type" : "CIMPictureMarker",
+                        "type" : "CIMVectorMarker",
                         "enable" : true,
                         "anchorPointUnits" : "Relative",
-                        "dominantSizeAxis3D" : "Z",
-                        "size" : 18,
+                        "dominantSizeAxis3D" : "Y",
+                        "rotation" : 45,
+                        "size" : 13,
                         "billboardMode3D" : "FaceNearPlane",
-                        "invertBackfaceTexture" : true,
+                        "frame" : {
+                          "xmin" : -1.5,
+                          "ymin" : -5,
+                          "xmax" : 1.5,
+                          "ymax" : 5
+                        },
+                        "markerGraphics" : [
+                          {
+                            "type" : "CIMMarkerGraphic",
+                            "geometry" : {
+                              "paths" : [
+                                [
+                                  [
+                                    0,
+                                    5
+                                  ],
+                                  [
+                                    0,
+                                    -5
+                                  ]
+                                ]
+                              ]
+                            },
+                            "symbol" : {
+                              "type" : "CIMLineSymbol",
+                              "symbolLayers" : [
+                                {
+                                  "type" : "CIMSolidStroke",
+                                  "enable" : true,
+                                  "capStyle" : "Butt",
+                                  "joinStyle" : "Round",
+                                  "lineStyle3D" : "Strip",
+                                  "miterLimit" : 10,
+                                  "width" : 0.5,
+                                  "color" : {
+                                    "type" : "CIMRGBColor",
+                                    "values" : [
+                                      0,
+                                      0,
+                                      0,
+                                      100
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      },
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : true,
+                        "colorLocked" : true,
+                        "anchorPoint" : {
+                          "x" : -1,
+                          "y" : 1
+                        },
+                        "anchorPointUnits" : "Absolute",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 11,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 250,
+                        "fontFamilyName" : "ESRI US MUTCD 3",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
                         "scaleX" : 1,
-                        "textureFilter" : "Picture",
-                        "tintColor" : {
-                          "type" : "CIMRGBColor",
-                          "values" : [
-                            255,
-                            255,
-                            255,
-                            100
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            }
                           ]
                         },
-                        "url" : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IB2cksfwAAAAlwSFlzAAAOxAAADsQBlSsOGwAABDBJREFUSInN1ktIHHccwPHvzOzq7qpbxhhrrFt8rR5KEyxRofVdetFDkFK2CsWDFoQS1t2lBNKDRw/JPpJS6wNKb4lYkNpSaYMXlYjYViseKlgV25WUUbSz6hp33enBrmj2EZuUkt9lBv6//+8zj/9Lx/8cuhcdNAEW4GXgAHgE/AFE/ktQAj4A3gfqgZQn2v8ERoF+4KfnBd8GPgNKAXQ6XcBisaxfuHAhEg6HU7a2tkS/358TiUQ+BDqAr4CPAOVZQDvgBqTMzMxHLS0tmVeuXMkQRTHjdNLh4SEzMzPa8PDwwf7+/ntAJXANmP83YDvgA6ivr/+rtbU1RxCEuIkpKSlUV1cLFRUVxv7+/qOFhYVXgQf/wCvnAcuAzwFNr9czOzv7Uk1NDRaLJcGzHUdqairXr1+Xent7mZuby+L4v5YBoaeBbkB/9erVQF1dXcbdu3e5ffs2LpeLUChEUVHRmeRgMEg4HEYQBEwmEx0dHXR3d2ubm5uvAZ3Ap8nAN4F6SZLCNpstQ5Zl7HY7UVSWZVpaWggGg0iSBEBaWhqSJLG+vs79+/fp6emhublZGBwcBLjJ8aCLJALfBaitrY3IsgxAaWkpdrudO3fusLGxQSQSoaysLOaz5OfnU1VVhSiKlJeXc+/ePXZ3d3OAt4DJRGA9QGVl5Zm5VlJSQldXF7du3aKvrw+n00l+fn4MKoriyfXy5cs8fPgQjqdWQvAVgNzc3JhiVquV3NxcFEXB7XbjdDopKCiIyYtGdnb2mZqJQFkQBM1oNMadAwaDAafTidfrxePx4HA4KCwsjAumpaVFbzOTgZuapl3a39/HZDLFLVRUVITD4cDn8+H1eunq6ooZuQCBQCB6e2bVeRL8Hbjk9/uxWq1xwdOo1+vF6/XicDhi0OXl5dM1E4IPgIq5ubmkIEBhYSFOpxOPx3PypsXFxQDs7OywtLQUTf0+GTgMfDI5OUljYyPp6elJ0YKCAlwuF263+wS1Wq2MjY1xdHSEwWBQDg4OfkwG/gKMBIPB5qGhIdrb25OCcDz/XC4XHo8Hn89HW1sbExMT0eYbT+bHW9o+FgThnenp6fScnByamprOjbrdbgYGBgCQZfnX7e3tL88D/qZpmk0QhG9GRkZERVGw2WwYjcakqKIoJ8ud2WxWt7e3qwDtPCDAd5qmXdPpdMNTU1OG+fl5GhoaePz4MZqmEd2q9vb2WFhYYHx8nLW1NQCys7MVSZLKVVXdilc42Qb8bTgcft1sNn+hqmr16OgoAJ2dnZjNZkKhELu7uyfJBoNBKy4u/npxcdEGHCYq+rQjxrKqqjV6vf6NvLy8G3t7ew2BQEDe2dmRBEHAbDYfZWVlKRcvXvxBFMWb09PT/qfUO9+pLRQK/by6umo73U/TtCNVVTVVVVlZidnYnw+ME+Fn7PfiH4SfO/4G+9l74b5+8vsAAAAASUVORK5CYII="
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
+                      },
+                      {
+                        "type" : "CIMCharacterMarker",
+                        "enable" : true,
+                        "anchorPointUnits" : "Relative",
+                        "dominantSizeAxis3D" : "Y",
+                        "size" : 19,
+                        "billboardMode3D" : "FaceNearPlane",
+                        "characterIndex" : 33,
+                        "fontFamilyName" : "ESRI Default Marker",
+                        "fontStyleName" : "Regular",
+                        "fontType" : "Unspecified",
+                        "scaleX" : 1,
+                        "symbol" : {
+                          "type" : "CIMPolygonSymbol",
+                          "symbolLayers" : [
+                            {
+                              "type" : "CIMSolidStroke",
+                              "enable" : true,
+                              "capStyle" : "Round",
+                              "joinStyle" : "Round",
+                              "lineStyle3D" : "Strip",
+                              "miterLimit" : 10,
+                              "width" : 0.29999999999999999,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  0,
+                                  0,
+                                  0,
+                                  100
+                                ]
+                              }
+                            },
+                            {
+                              "type" : "CIMSolidFill",
+                              "enable" : true,
+                              "color" : {
+                                "type" : "CIMRGBColor",
+                                "values" : [
+                                  178,
+                                  178,
+                                  178,
+                                  100
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "scaleSymbolsProportionally" : true,
+                        "respectFrame" : true
                       }
                     ],
                     "haloSize" : 1,
                     "scaleX" : 1,
-                    "angleAlignment" : "Display"
+                    "angleAlignment" : "Map"
                   }
                 },
                 "values" : [
@@ -1956,10 +2019,7 @@
         "polygonSymbolColorTarget" : "Fill"
       },
       "scaleSymbols" : true,
-      "snappable" : true,
-      "symbolLayerDrawing" : {
-        "type" : "CIMSymbolLayerDrawing"
-      }
+      "snappable" : true
     }
   ]
 }

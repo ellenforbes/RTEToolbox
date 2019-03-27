@@ -150,7 +150,7 @@ class CreateInstallLayer(object):
         arcpy.AddField_management(input_fc, "MiscMods", "TEXT", "", "", "20", "Misc Modifications", "NULLABLE", "NON_REQUIRED","MiscMods")
         arcpy.AddField_management(input_fc, "SndConnctR", "TEXT", "", "", "10", "Secondary Connection Refresh", "NULLABLE", "NON_REQUIRED","YesNo")
         arcpy.AddField_management(input_fc, "PowerAvail", "TEXT", "", "", "10", "Power Available", "NULLABLE", "NON_REQUIRED","YesNo")
-        arcpy.AddField_management(input_fc, "TraffCon", "TEXT", "", "", "10", "Traffic Control", "NULLABLE", "NON_REQUIRED","TraffCon")
+        arcpy.AddField_management(input_fc, "TraffCon", "TEXT", "", "", "20", "Traffic Control", "NULLABLE", "NON_REQUIRED","TraffCon")
         arcpy.AddField_management(input_fc, "Operator", "TEXT", "", "", "50", "Operator", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "InstlComs", "TEXT", "", "", "", "Install Comments", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "InstlDate", "DATE", "", "", "", "Install Date", "NULLABLE", "NON_REQUIRED","")

@@ -80,9 +80,6 @@ class surveyFCSetUp(object):
         #Process : Add Coded Value To Domain : arcpy.AddCodedValueToDomain_management (in_workspace, domain_name, code, code_description)
         #LumType
         LumTypeCVs = [
-            ["Building Light - Decorative", "Building Light - Decorative"],
-            ["Building Light - Wallpack", "Building Light - Wallpack"],
-            ["Building Light - Other", "Building Light - Other"],
             ["Cobrahead", "Cobrahead"],
             ["Decorative - Acorn Post Top", "Decorative - Acorn Post Top"],
             ["Decorative - Bell Downlighting", "Decorative - Bell Downlighting"],
@@ -99,6 +96,9 @@ class surveyFCSetUp(object):
             ["Floodlight - Tenon", "Floodlight - Tenon"],
             ["Floodlight - Yoke", "Floodlight - Yoke"],
             ["NEMA Head or Dusk to Dawn", "NEMA Head or Dusk to Dawn"],
+            ["Building Light - Decorative", "Building Light - Decorative"],
+            ["Building Light - Wallpack", "Building Light - Wallpack"],
+            ["Building Light - Other", "Building Light - Other"],
             ["New Light Request", "New Light Request"],
             ["No Light", "No Light"],
             ["Offset Roadway", "Offset Roadway"],
