@@ -1,6 +1,7 @@
 import arcpy
 import datetime
 from datetime import date
+import re
 
 class Toolbox(object):
     def __init__(self):
@@ -22,21 +23,20 @@ class surveyFCSetUp(object):
 
     def getParameterInfo(self):
         """Define parameter definitions"""
-        param0 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
-        param1 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
-        param2 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
-        param3 = arcpy.Parameter("missed_light","Tick if Layer is for Missed Lights","Input","GPBoolean","Optional")
+        param0 = arcpy.Parameter("missed_light","Tick if Layer is for Missed Lights","Input","GPBoolean","Optional")
 
-        params = [param0, param1, param2, param3]
+        params = [param0]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
 
-        folder_location = parameters[0].valueAsText
-        cityname = parameters[1].valueAsText
-        sp = parameters[2].valueAsText
-        missed_light = parameters[3].valueAsText
+        project = arcpy.mp.ArcGISProject("CURRENT")
+        folder_location = project.homeFolder
+        folder_parts = re.split(r"^(.*)\\(.*)_(.*)$",folder_location)
+        cityname = folder_parts[2]
+        sp = folder_parts[3]
+        missed_light = parameters[0].valueAsText
         today = str(date.today().strftime("%Y%m%d"))
 
         if missed_light == 'true':
