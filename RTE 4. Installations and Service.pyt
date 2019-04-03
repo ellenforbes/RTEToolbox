@@ -182,10 +182,7 @@ class CreateServiceLayer(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("iga_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
-        param2 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
-        param3 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
-        params = [param0, param1, param2, param3]
+        params = [param0]
         return params
 
 
@@ -193,26 +190,26 @@ class CreateServiceLayer(object):
         """The source code of the tool."""
         #Define variables
 
-        #To Do - Calculate all Repair Status to None
-
+        #To Do - Calculate all Repair Status to None       
+        project = arcpy.mp.ArcGISProject("CURRENT")
         iga_fc = parameters[0].valueAsText
-        folder_location = parameters[1].valueAsText
-        cityname = parameters[2].valueAsText
-        sp = parameters[3].valueAsText
+        folder_location = project.homeFolder
+        folder_parts = re.split(r"^(.*)\\(.*)_(.*)$",folder_location)
+        cityname = folder_parts[2]
+        sp = folder_parts[3]
         today = str(date.today().strftime("%Y%m%d"))
         input_fc_name = cityname + "_" + sp + "_" + today + "_" + "Service"
         input_fgdb_name = "LayerCreationService"
         input_fgdb =  folder_location + "\\" + input_fgdb_name + ".gdb"
         input_fc =  folder_location + "\\" + input_fgdb_name +".gdb\\" + input_fc_name
-
-        arcpy.AddMessage(input_fgdb)
-        arcpy.AddMessage(input_fc)
+        
+        arcpy.AddMessage("Creating " + cityname + "_" + sp + "_" + today + "_" + "Service")
+        arcpy.AddMessage("at " + input_fgdb)
 
         arcpy.CreateFileGDB_management (folder_location, input_fgdb_name)
         arcpy.FeatureClassToFeatureClass_conversion (iga_fc, input_fgdb, input_fc_name)
 
-    
-        arcpy.AddMessage("Data Copied To Local")
+        arcpy.AddMessage("Copied data to local dataset, now adding service fields.")
 
         arcpy.CreateDomain_management(input_fgdb, "SvcType", "Mainenance, this is what action is take to remedy the problem", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "RepIssue", "Mainenance, the short decription of the issue", "TEXT", "CODED", "DEFAULT", "DEFAULT")
