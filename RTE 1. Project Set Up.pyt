@@ -61,21 +61,31 @@ class surveyFCSetUp(object):
         arcpy.AddMessage("RTE ID Field Added, Cannot Be Deleted")
         arcpy.AddMessage("Why didn't the map have any meridians?")
 
-        arcpy.CreateDomain_management(input_fgdb, "LumType", "Survey, Lists luminaire type found by surveyor", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "DecoSubT", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "DecoCol", "Survey", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "Technology", "Survey, Technology used in luminaire", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "HIDWatt", "Survey, Used by lamp wattage field", "SHORT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "ArmLength", "Survey, measured in feet by surveyor", "SHORT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "RoadClass", "Survey, roadway type luminaire is found on", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "PedActive", "Survey, indicates pedestrian activity", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "YesNo", "A Yes No list to be used in multiple fields", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "ArmOrient", "Survey, indicates arm orientation of lamp", "SHORT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "WireLoc", "Survey, indicates if wire is located overhead or underground", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "PoleMat", "Survey, indicates the material of the pole", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "PoleUse", "Survey, indicates the poles main use", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "Problems", "Survey, problems that may be encountered in a light change", "TEXT", "CODED", "DEFAULT", "DEFAULT")
-        arcpy.CreateDomain_management(input_fgdb, "Surveyor", "Survey, the identity of the surveyor", "TEXT", "CODED", "DEFAULT", "DEFAULT")
+        # Rick making a nice function for Ellen
+
+        def create_domain_quick(field_name, description):
+          arcpy.CreateDomain_management(input_fgdb, field_name, description, "TEXT", "CODED", "DEFAULT", "DEFAULT")  
+
+        domains = [
+            { "field_name": "LumType", "description": "Survey, Lists luminaire type found by surveyor" },
+            { "field_name": "DecoSubT", "description": "Survey" },
+            { "field_name": "DecoCol", "description": "Survey" },
+            { "field_name": "Technology", "description": "Survey, Technology used in luminaire" },
+            { "field_name": "HIDWatt", "description": "Survey, Used by lamp wattage field" },
+            { "field_name": "ArmLength", "description": "Survey, measured in feet by surveyor" },
+            { "field_name": "RoadClass", "description": "Survey, roadway type luminaire is found on" },
+            { "field_name": "PedActive", "description": "Survey, indicates pedestrian activity" },
+            { "field_name": "YesNo", "description": "A Yes No list to be used in multiple fields" },
+            { "field_name": "ArmOrient", "description": "Survey, indicates arm orientation of lamp" },
+            { "field_name": "WireLoc", "description": "Survey, indicates if wire is located overhead or underground" },
+            { "field_name": "PoleMat", "description": "Survey, indicates the material of the pole" },
+            { "field_name": "PoleUse", "description": "Survey, indicates the poles main use" },
+            { "field_name": "Problems", "description": "Survey, problems that may be encountered in a light change" },
+            { "field_name": "Surveyor", "description": "Survey, the identity of the surveyor" },
+        ]
+
+        for domain in domains:
+            create_domain_quick(domain.get("field_name"), domain.get("description"))
 
         #Process : Add Coded Value To Domain : arcpy.AddCodedValueToDomain_management (in_workspace, domain_name, code, code_description)
         #LumType
