@@ -1,4 +1,5 @@
 import arcpy
+import re
 from datetime import date
 
 class Toolbox(object):
@@ -22,35 +23,34 @@ class CreateInstallLayer(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("iga_fc","Municipality Dataset","Input", ["GPFeatureLayer", "GPString"],"Required")
-        param1 = arcpy.Parameter("folder_location","Folder for f.Gdb Creation","Input", "DEFolder","Required")
-        param2 = arcpy.Parameter("cityname","Cityname (no spaces)","Input","GPString","Required")
-        param3 = arcpy.Parameter("sp","State or Province Initial","Input","GPString","Required")
-        params = [param0, param1, param2, param3]
+        params = [param0]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
 
+        project = arcpy.mp.ArcGISProject("CURRENT")
         iga_fc = parameters[0].valueAsText
-        folder_location = parameters[1].valueAsText
-        cityname = parameters[2].valueAsText
-        sp = parameters[3].valueAsText
+        folder_location = project.homeFolder
+        folder_parts = re.split(r"^(.*)\\(.*)_(.*)$",folder_location)
+        cityname = folder_parts[2]
+        sp = folder_parts[3]
         today = str(date.today().strftime("%Y%m%d"))
         input_fc_name = cityname + "_" + sp + "_" + today + "_" + "Installations"
         input_fgdb_name = "LayerCreationInstallations"
         input_fgdb =  folder_location + "\\" + input_fgdb_name + ".gdb"
         input_fc =  folder_location + "\\" + input_fgdb_name +".gdb\\" + input_fc_name
-
-        arcpy.AddMessage(input_fgdb)
-        arcpy.AddMessage(input_fc)
+        
+        arcpy.AddMessage("Creating " + cityname + "_" + sp + "_" + today + "_" + "Installations")
+        arcpy.AddMessage("at " + input_fgdb)
 
         arcpy.CreateFileGDB_management (folder_location, input_fgdb_name)
         arcpy.FeatureClassToFeatureClass_conversion (iga_fc, input_fgdb, input_fc_name)
     
-        arcpy.AddMessage("Data Copied To Local")
+        arcpy.AddMessage("Copied data to local dataset, now adding installation fields.")
+        arcpy.AddMessage("Why do paper maps never win at poker?")
 
- 
         #Add Domains and Coded Values
         arcpy.CreateDomain_management(input_fgdb, "Status", "Installations, shows status of the installation", "TEXT", "CODED", "DEFAULT", "DEFAULT")
         arcpy.CreateDomain_management(input_fgdb, "VPoleID", "Installations, checks surveyor entered utility pole ID", "TEXT", "CODED", "DEFAULT", "DEFAULT")
@@ -105,6 +105,8 @@ class CreateInstallLayer(object):
         for ArmMods in ArmModsCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "ArmMods", ArmMods[0], ArmMods[1])
 
+        arcpy.AddMessage("...because they always fold.")
+
         MiscModsCVs = [
             ["Replace Bolt", "Replace Bolt"],
             ["Realign Arm", "Realign Arm"],
@@ -156,8 +158,10 @@ class CreateInstallLayer(object):
         arcpy.AddField_management(input_fc, "InstlDate", "DATE", "", "", "", "Install Date", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "IRepIssue", "TEXT", "", "", "30", "Reported Issue at Installation", "NULLABLE", "NON_REQUIRED","RepIssue")
 
+        arcpy.AddMessage("Installation fields and domains added, now deleting non-required fields.")
+
         #Delete Excess Fields
-        fields_to_keep = ["RTEID", "FixType", "StreetName", "HVoltage", "UtlPoleID", "Problems", "ProjectNo", "PointX", "PointY", "LumType", "LEDDesign", "MiscParts", "InstlCode", "Status", "VPoleID", "SmartNode", "WireRepd", "FuseRepd", "FuseHdRepd", "ArmMods", "MiscMods", "SndConnctR", "PowerAvail", "TraffCon", "Operator", "InstlComs", "InstlDate", "IRepIssue"]
+        fields_to_keep = ["OBJECTID", "Shape", "RTEID", "FixType", "StreetName", "HVoltage", "UtlPoleID", "Problems", "ProjectNo", "PointX", "PointY", "LumType", "LEDDesign", "MiscParts", "InstlCode", "Status", "VPoleID", "SmartNode", "WireRepd", "FuseRepd", "FuseHdRepd", "ArmMods", "MiscMods", "SndConnctR", "PowerAvail", "TraffCon", "Operator", "InstlComs", "InstlDate", "IRepIssue"]
         all_field_names = [f.name for f in arcpy.ListFields(input_fc)]
         for field in all_field_names:
             if field not in fields_to_keep:
