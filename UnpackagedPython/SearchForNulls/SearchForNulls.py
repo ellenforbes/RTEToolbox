@@ -19,3 +19,13 @@ for filenames in arcpy.da.Walk(inputFeatureClass):
                 pass  
 
 del row, cursor  
+
+
+featureClass = "Longmeadow_MA_20190311_Survey"
+fields = ["RTEID", "Technology", "LampWatt", "RoadClass"]
+for field in fields:  
+    cursor = arcpy.SearchCursor(featureClass)
+    for row in cursor:
+        cell = row.getValue(field)
+        if cell == None:
+            print(row["RTEID"])

@@ -156,6 +156,16 @@ class CreateInstallLayer(object):
         arcpy.AddField_management(input_fc, "InstlDate", "DATE", "", "", "", "Install Date", "NULLABLE", "NON_REQUIRED","")
         arcpy.AddField_management(input_fc, "IRepIssue", "TEXT", "", "", "30", "Reported Issue at Installation", "NULLABLE", "NON_REQUIRED","RepIssue")
 
+        #Delete Excess Fields
+        fields_to_keep = ["RTEID", "FixType", "StreetName", "HVoltage", "UtlPoleID", "Problems", "ProjectNo", "PointX", "PointY", "LumType", "LEDDesign", "MiscParts", "InstlCode", "Status", "VPoleID", "SmartNode", "WireRepd", "FuseRepd", "FuseHdRepd", "ArmMods", "MiscMods", "SndConnctR", "PowerAvail", "TraffCon", "Operator", "InstlComs", "InstlDate", "IRepIssue"]
+        all_field_names = [f.name for f in arcpy.ListFields(input_fc)]
+        for field in all_field_names:
+            if field not in fields_to_keep:
+                arcpy.AddMessage("Currently deleting " + field)
+                arcpy.DeleteField_management(input_fc, field)
+            else:
+                pass
+
         return
 
 class CreateServiceLayer(object):
@@ -288,13 +298,14 @@ class CreateServiceLayer(object):
         arcpy.AddField_management(input_fc, "TSvcComs", "TEXT", "", "", "", "3rd Contractor Service Comments", "NULLABLE", "NON_REQUIRED","")
 
         #Delete Excess Fields
-        fields_to_keep = ["OBJECTID", "Shape", "RTE_ID", "RTEID", "LEDDesigned", "LEDDesign","RepairS", "RepIssue", "IssueDesc", "CaseNo", "SvcRqDate", "SvcDuDate", "SvcType", "SvcDate", "SvcComs"]
+        fields_to_keep = ["OBJECTID", "Shape", "RTE_ID", "RTEID", "LEDDesigned", "LEDDesign","RepairS", "FRepIssue", "FIssueDesc", "FCaseNo", "FSvcRqDate", "FSvcDuDate", "FSvcType", "FSvcDate", "FSvcComs", "SRepIssue", "SIssueDesc", "SCaseNo", "SSvcRqDate", "SSvcDuDate", "SSvcType", "SSvcDate", "SSvcComs", "TRepIssue", "TIssueDesc", "TCaseNo", "TSvcRqDate", "TSvcDuDate", "TSvcType", "TSvcDate", "TSvcComs"]
         all_field_names = [f.name for f in arcpy.ListFields(input_fc)]
-        arcpy.AddMessage(all_field_names)
-        if all_field_names[0] != fields_to_keep[0]:
-            arcpy.DeleteField_management (input_fc, all_field_names[0])
-        else:
-            pass
+        for field in all_field_names:
+            if field not in fields_to_keep:
+                arcpy.AddMessage("Currently deleting " + field)
+                arcpy.DeleteField_management(input_fc, field)
+            else:
+                pass
 
         return
 

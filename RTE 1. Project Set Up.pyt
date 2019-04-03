@@ -233,7 +233,8 @@ class surveyFCSetUp(object):
             ["Metal - Round", "Metal - Round"],
             ["Metal - Faceted", "Metal - Faceted"],
             ["Wood", "Wood"],
-            ["Other", "Other"],    
+            ["Other", "Other"],
+            ["Wall Mounted", "Wall Mounted"],     
         ]
         for PoleMat in PoleMatCVs:
             arcpy.AddCodedValueToDomain_management(input_fgdb, "PoleMat", PoleMat[0], PoleMat[1])
