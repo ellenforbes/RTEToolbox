@@ -143,11 +143,7 @@ class surveyFCSetUp(object):
 
         #Tehcnology
         TechnologyCVs = [
-            ["HPS", "HPS"],
-            ["LPS", "LPS"],
-            ["Mercury Vapor", "Mercury Vapor"],
-            ["Metal Halide", "Metal Halide"],
-            ["Incandescent", "Incandescent"],
+            ["HID", "HID"],
             ["Induction", "Induction"],
             ["LED", "LED"],
         ]
