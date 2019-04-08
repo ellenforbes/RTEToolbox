@@ -1,5 +1,7 @@
 import arcpy
 import re
+import os
+import datetime
 from datetime import date
 
 class Toolbox(object):
@@ -461,31 +463,35 @@ class CreateFIR(object):
     def getParameterInfo(self):
         """Define parameter definitions"""
         param0 = arcpy.Parameter("input_fc","Municipality Dataset","Input","GPFeatureLayer","Required")
-        param1 = arcpy.Parameter("outputFolder", "Folder", "Input", "DEFolder","Required")
-        param2 = arcpy.Parameter("outputExcel", "Excel File", "Output", "DEFile","Required")
-        param3 = arcpy.Parameter("outputKML", "KML File", "Output", "DEFile","Required")
-        
-        params = [param0, param1, param2, param3]
+        params = [param0]
         return params
 
     def execute(self, parameters, messages):
         """The source code of the tool."""
         #Define variables
         input_fc = parameters[0].valueAsText
-        outputFolder = parameters[1].valueAsText
-        outputExcel = parameters[2].valueAsText
-        outputKML =  parameters[3].valueAsText
+        project = arcpy.mp.ArcGISProject("CURRENT")
+        folder_location = project.homeFolder
+        folder_parts = re.split(r"^(.*)\\(.*)_(.*)$",folder_location)
+        os.makedirs(folder_location + "\\FIR")
+        fir_folder = folder_location + "\\FIR"
+        cityname = folder_parts[2]
+        sp = folder_parts[3]
+        today = str(date.today().strftime("%Y%m%d"))
+        output =  cityname + "_" + sp + "_" + today + "_FIR"
+        output_excel = fir_folder + "\\" + output
+        output_kml =  fir_folder + "\\" + output
 
-        arcpy.MakeFeatureLayer_management (input_fc, "input_fcOut")
+        arcpy.MakeFeatureLayer_management (input_fc, output)
 
         # Converts Feature to Excel
-        arcpy.TableToExcel_conversion("input_fcOut", outputExcel)
+        arcpy.TableToExcel_conversion(output, output_excel)
 
         # Converts Feature to Shapefile
-        arcpy.FeatureClassToShapefile_conversion("input_fcOut", outputFolder)
+        arcpy.FeatureClassToShapefile_conversion(output, fir_folder)
 
         # Converts Feature to Excel
-        arcpy.LayerToKML_conversion("input_fcOut", outputKML)
+        arcpy.LayerToKML_conversion(output, output_kml)
 
         return
 
